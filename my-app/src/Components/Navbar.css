@@ -28,10 +28,20 @@
 }
 .navbar-elements-third{
     flex:1;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
 }
 .navbar-input{
     border: none;
 }
 .logo{
     font-weight: bold;
+}
+.navbar-menu-item{
+    cursor: pointer;
+    font-size: 15px;
+}
+.navbar-third-items{
+    margin-left: 25px;
 }
