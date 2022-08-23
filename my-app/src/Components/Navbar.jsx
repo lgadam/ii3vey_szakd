@@ -6,7 +6,9 @@ import Search from '@mui/icons-material/SearchOutlined';
 const First = styled.div``
 const Launguage = styled.span``
 const SearchContainer = styled.div``
+const Input = styled.input``
 const Second = styled.div``
+const Logo = styled.h1``
 const Third = styled.div``
 
 function Navbar() {
@@ -16,11 +18,11 @@ function Navbar() {
         <First className='navbar-elements-first'>
             <Launguage className='navbar-language'>HU</Launguage>
             <SearchContainer className='navbar-searchcontainer'>
-                keresés..
+                <Input className='navbar-input'/>
                 <Search/>
             </SearchContainer>
         </First>
-        <Second className='navbar-elements-second'>Második</Second>
+        <Second className='navbar-elements-second'><Logo>LgAdam Wines</Logo></Second>
         <Third className='navbar-elements-third'>Harmadik</Third>
       </div>
     </div>

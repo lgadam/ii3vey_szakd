@@ -24,7 +24,14 @@
 }
 .navbar-elements-second{
     flex:1;
+    text-align: center;
 }
 .navbar-elements-third{
     flex:1;
+}
+.navbar-input{
+    border: none;
+}
+.logo{
+    font-weight: bold;
 }
