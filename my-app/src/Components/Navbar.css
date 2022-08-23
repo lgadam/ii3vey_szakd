@@ -3,4 +3,28 @@
 }
 .navbar-wrapper{
     padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+}
+.navbar-language{
+    cursor: pointer;
+    font-size: 15px;
+}
+.navbar-searchcontainer{
+    border: 0.75px solid lightgrey;
+    display: flex;
+    align-items: center;
+    padding: 5px;
+    margin-left: 20px;
+}
+.navbar-elements-first{
+    flex:1;
+    display: flex;
+    align-items: center;
+}
+.navbar-elements-second{
+    flex:1;
+}
+.navbar-elements-third{
+    flex:1;
 }
