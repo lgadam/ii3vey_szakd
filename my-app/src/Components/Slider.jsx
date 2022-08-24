@@ -65,7 +65,7 @@ const Slider = () => {
             {slideritems.map(item=>(
             <Slide bg={item.bg}>
                 <ImageContainer>
-                    <Image src={item.img} />
+                    <Image src={item.image} />
                 </ImageContainer>
                 <InfoContainer>
                     <Button className='btn-slider'>Részletek</Button>
