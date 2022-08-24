@@ -30,6 +30,7 @@ const ImageContainer = styled.div`
 
 const Image = styled.img`
     height: 80%;
+    object-fit: cover;
 `;
 const InfoContainer = styled.div`
     flex: 1;
