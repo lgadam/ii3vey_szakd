@@ -11,13 +11,13 @@ const Arrow = styled.div`
 `;
 const Wrapper = styled.div`
     height: 100px;
-
+    display: flex;
 `
 const Slide = styled.div`
-    display: flex;
-    align-items: center;
     width: 100vw;
     height: 100vh;
+    display: flex;
+    align-items: center;
 `;
 const ImageContainer = styled.div`
     height: 100%;
@@ -36,7 +36,7 @@ const Title = styled.h1`
 
 `
 const Description = styled.p`
-    margin: 30px 0px;
+    margin: 50px 0px;
     font-size: 24px;
     font-weight: 300;
 `
@@ -49,6 +49,16 @@ const Slider = () => {
             <KeyboardDoubleArrowLeft/>
         </Arrow>
         <Wrapper>
+            <Slide>
+                <ImageContainer>
+                    <Image src={mainLogo} />
+                </ImageContainer>
+                <InfoContainer>
+                    <Button className='btn-slider'>Részletek</Button>
+                    <Title>Teszt borválogatás</Title>
+                    <Description>Rövid leírás a termékről ...</Description>
+                </InfoContainer>
+            </Slide>
             <Slide>
                 <ImageContainer>
                     <Image src={mainLogo} />
