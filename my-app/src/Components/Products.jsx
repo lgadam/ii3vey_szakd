@@ -1,7 +1,10 @@
 import styled from "styled-components"
 import { advantagedProducts } from "../data"
 import ProductItem from "./ProductItem"
-const Container = styled.div``
+const Container = styled.div`
+    padding: 24px;
+    display: flex;
+`
 
 const Products = () => {
   return (
