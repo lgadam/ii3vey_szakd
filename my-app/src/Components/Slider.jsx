@@ -13,6 +13,7 @@ const Arrow = styled.div`
 const Wrapper = styled.div`
     height: 100px;
     display: flex;
+    transition: all 1.25s ease;
     transform:translateX(${props=>props.slideIndex * -100}vw); //transform: a slideok közötti mozgatás ezt használjuk a click eventnél
 `
 const Slide = styled.div`
