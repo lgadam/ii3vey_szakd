@@ -2,7 +2,8 @@ import styled from 'styled-components'
 import "./Slider.css";
 import KeyboardDoubleArrowLeft from '@mui/icons-material/KeyboardDoubleArrowLeftOutlined';
 import KeyboardDoubleArrowRight from '@mui/icons-material/KeyboardDoubleArrowRightOutlined';
-import mainLogo from'./logo_szakdoga.PNG';
+import { useState } from 'react';
+import { slideritems } from '../data'; 
 
 const Container = styled.div``
 const Arrow = styled.div`
@@ -12,12 +13,14 @@ const Arrow = styled.div`
 const Wrapper = styled.div`
     height: 100px;
     display: flex;
+    transform:translateX(${props=>props.slideIndex * -100}vw); //transform: a slideok közötti mozgatás ezt használjuk a click eventnél
 `
 const Slide = styled.div`
     width: 100vw;
     height: 100vh;
     display: flex;
     align-items: center;
+    background-color: #${props=>props.bg};
 `;
 const ImageContainer = styled.div`
     height: 100%;
@@ -43,34 +46,36 @@ const Description = styled.p`
 const Button = styled.button``
 
 const Slider = () => {
-  return (
+    const [slideIndex, setSlideIndex] = useState(0);//slider lapozáshoz..
+    const handleClick = (direction) => {
+
+    if(direction === "left"){
+        setSlideIndex(slideIndex > 0 ? slideIndex - 1 : 2);   
+    } else {
+        setSlideIndex(slideIndex < 2 ? slideIndex + 1 : 0);
+    }
+    };
+
+    return (
     <Container className='slider-container'>
-        <Arrow direction="left" className='slider-arrow'>
+        <Arrow direction="left" onClick={() => handleClick("left")} className='slider-arrow'>
             <KeyboardDoubleArrowLeft/>
         </Arrow>
-        <Wrapper>
-            <Slide>
+        <Wrapper slideIndex={slideIndex}>
+            {slideritems.map(item=>(
+            <Slide bg={item.bg}>
                 <ImageContainer>
-                    <Image src={mainLogo} />
+                    <Image src={item.img} />
                 </ImageContainer>
                 <InfoContainer>
                     <Button className='btn-slider'>Részletek</Button>
-                    <Title>Teszt borválogatás</Title>
-                    <Description>Rövid leírás a termékről ...</Description>
+                    <Title>{item.title}</Title>
+                    <Description>{item.description}</Description>
                 </InfoContainer>
             </Slide>
-            <Slide>
-                <ImageContainer>
-                    <Image src={mainLogo} />
-                </ImageContainer>
-                <InfoContainer>
-                    <Button className='btn-slider'>Részletek</Button>
-                    <Title>Teszt borválogatás</Title>
-                    <Description>Rövid leírás a termékről ...</Description>
-                </InfoContainer>
-            </Slide>
+            ))}
         </Wrapper>
-        <Arrow direction="right" className='slider-arrow'>
+        <Arrow direction="right" onClick={() => handleClick("right")} className='slider-arrow'>
             <KeyboardDoubleArrowRight/>
         </Arrow>
     </Container>

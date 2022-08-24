@@ -3,6 +3,7 @@
     height: 100vh;
     display: flex;
     position: relative;
+    overflow: hidden;
 }
 .slider-arrow{
     width: 50px;
@@ -18,6 +19,7 @@
     margin: auto;
     cursor: pointer;
     opacity: 0.75;
+    z-index: 2;
 }
 .btn-slider {
     width: 180px;
