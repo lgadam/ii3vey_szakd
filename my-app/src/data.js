@@ -1,7 +1,7 @@
 import bor1 from './bor1.jpg';
 import bor2 from './bor2.jpg';
 import bor3 from './bor3.jpg';
-import voros from './voros.jpg';
+import voros from './voros.png';
 import feher from './feher.jpg';
 import roze from './roze.jpg';
 export const slideritems = [
