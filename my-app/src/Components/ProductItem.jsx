@@ -16,13 +16,10 @@ const ProductItem = ({item}) => {
   return (
     <Container>
       <Circle/>
-      <Image src={item.img}/>
+      <Image src={item.image}/>
       <InfoContainer>
         <Icon>
             <ShoppingBasketIcon />
-        </Icon>
-        <Icon>
-            <SearchOutlined />
         </Icon>
         <Icon>
             <SearchOutlined />
