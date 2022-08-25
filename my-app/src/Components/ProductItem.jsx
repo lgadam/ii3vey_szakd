@@ -28,7 +28,7 @@ const Container = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #d3f8e7;
+    background-color: #66e5aa;
     position: relative;
     &:hover ${InfoContainer}{
         opacity: 1;

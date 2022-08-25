@@ -1,0 +1,15 @@
+.btn-mail {
+    cursor: pointer;
+    background: transparent;
+    border: none;
+    outline: none;
+    transition: 1s ease-in-out;
+    font-size: 16px;
+  }
+  .btn-mail:hover {
+    transition: 1s ease-in-out;
+    background: #1a995d;
+  } 
+  .btn-mail span {
+    color: white;
+  }
