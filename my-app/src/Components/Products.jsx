@@ -4,6 +4,7 @@ import ProductItem from "./ProductItem"
 const Container = styled.div`
     padding: 24px;
     display: flex;
+    flex-wrap: wrap;
 `
 
 const Products = () => {
