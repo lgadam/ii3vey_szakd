@@ -57,6 +57,9 @@ const ListItem = styled.li`
     width: 50%;
     margin-bottom: 10px;
 `
+const ContactItem = styled.p`
+
+`
 const Footer = () => {
   return (
     <Container>
@@ -87,6 +90,9 @@ const Footer = () => {
         </Second>
         <Third>
             <ListH>Elérhetőségek:</ListH>
+            <ContactItem>Telephely: 3348 Szilvásvárad, Egri út 98.</ContactItem>
+            <ContactItem>Email cím: lgadamwines@gmail.com</ContactItem>
+            <ContactItem>Telefon szám: +36201234567</ContactItem>
         </Third>
     </Container>
   )
