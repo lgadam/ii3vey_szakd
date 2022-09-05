@@ -72,10 +72,10 @@ const ProductItem = ({item}) => {
             <ShoppingBasketIcon />
         </Icon>
         <Icon>
-            <SearchOutlined />
+            <FavoriteIcon />
         </Icon>
         <Icon>
-            <FavoriteIcon />
+            <SearchOutlined />
         </Icon>
       </InfoContainer>
     </Container>
