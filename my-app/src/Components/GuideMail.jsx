@@ -4,7 +4,7 @@ import "./GuideMail.css";
 
 const Container = styled.div`
     height: 40vh;
-    background-color: white;
+    background-color: #e9fbf3;
     display: flex;
     align-items: center;
     justify-content: center;

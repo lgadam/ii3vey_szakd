@@ -6,6 +6,7 @@ const Container = styled.div`
     margin: 5px;
     flex:1;
     margin-bottom: 100px;
+    padding-bottom: 35px;
 `
 const Image = styled.img`
     width: 100%;
