@@ -1,7 +1,7 @@
-import ProductList from "./Pages/ProductList";
+import Wine from "./Pages/Wine";
 
 const App = () => {
-    return <ProductList/>;
+    return <Wine/>;
 }
 
 export default App;
