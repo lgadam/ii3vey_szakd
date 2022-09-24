@@ -1,7 +1,7 @@
-import Home from "./Pages/Home";
+import Register from "./Pages/Register";
 
 const App = () => {
-    return <Home/>;
+    return <Register/>;
 }
 
 export default App;

@@ -10,17 +10,22 @@ const Container = styled.div`
         rgba(86, 67, 67, 0.5)
     ),
     url(${register_bg});
+    background-size: cover;
     display: flex;
     text-align: center;
     justify-content: center;
 `
 const Wrapper = styled.div`
+    margin-top: 100px;
+    height: 50%;
     width: 40%;
-    height: 60%;
     padding: 20px;
     background-color: white;
 `
-const Privacy = styled.span``
+const Privacy = styled.span`
+    font-size: 12px;
+    margin: 20px 20px;
+`
 const Title = styled.h1`
     font-weight: 400;
     font-size: 32px;
@@ -30,7 +35,7 @@ const Form = styled.form`
     flex-wrap: wrap;
 `
 const Button = styled.button`
-
+    margin: 20px 20px;
 `
 const Input = styled.input`
     flex: 1;
@@ -50,8 +55,8 @@ const Register = () => {
                 <Input placeholder="email cím" />
                 <Input placeholder="jelszó" />
                 <Input placeholder="jelszó újra" />
-                <Privacy>A létrehozás során a felhasználónak elkell fogadni a szabályzatot. <b>Szabályzat</b></Privacy>
                 <Button className="btn-slider">Felhasználó létrehozása</Button>
+                <Privacy>A létrehozás során a felhasználónak elkell fogadni a szabályzatot. <b>Szabályzat</b></Privacy>
             </Form>
         </Wrapper>
     </Container>
