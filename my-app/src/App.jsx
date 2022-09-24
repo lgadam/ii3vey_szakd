@@ -1,7 +1,7 @@
-import Wine from "./Pages/Wine";
+import Register from "./Pages/Register";
 
 const App = () => {
-    return <Wine/>;
+    return <Register/>;
 }
 
 export default App;

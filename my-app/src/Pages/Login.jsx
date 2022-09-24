@@ -1,8 +1,7 @@
 import styled from "styled-components"
 
 const Container = styled.div``
-
-const Register = () => {
+const Login = () => {
   return (
     <Container>
       
@@ -10,4 +9,4 @@ const Register = () => {
   )
 }
 
-export default Register
+export default Login
