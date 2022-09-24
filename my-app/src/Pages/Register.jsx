@@ -1,7 +1,16 @@
 import styled from "styled-components"
 import "../Components/Slider.css"
+import register_bg from '../register_bg1.jpg';
 
-const Container = styled.div``
+const Container = styled.div`
+    width: 100vw;
+    height: 100vh;
+    background: linear-gradient(
+        rgba(86, 67, 67, 0.5),
+        rgba(86, 67, 67, 0.5)
+    ),
+    url(${register_bg});
+`
 const Wrapper = styled.div``
 const Privacy = styled.span``
 const Title = styled.h1``
