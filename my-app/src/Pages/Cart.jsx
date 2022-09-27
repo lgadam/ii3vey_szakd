@@ -2,7 +2,7 @@ import Navbar from '../Components/Navbar'
 import Footer from '../Components/Footer'
 import Announcement from '../Components/Announcement'
 import styled from 'styled-components'
-
+import "../Components/Slider.css"
 const Container = styled.div``
 const Wrapper = styled.div`
     padding: 20px;
@@ -13,6 +13,7 @@ const Title = styled.h1`
 const Begin = styled.div`
     display: flex;
     align-items: center;
+    padding: 20px;
     justify-content: space-between;
 `
 const BeginTexts = styled.div``
@@ -22,12 +23,17 @@ const BeginTxt = styled.span`
     margin: 0px 10px;
 `
 
-const BeginBtn = styled.button`
-    cursor: pointer;
-    padding: 20px;
-    font-weight: 500;
+const BeginBtn = styled.button``
+const End = styled.div`
+    display: flex;
+    justify-content: space-between;
 `
-const End = styled.div``
+const Information = styled.div`
+    flex: 3;
+`
+const Summary = styled.div`
+    flex: 1;
+`
 const Cart = () => {
   return (
     <Container>
@@ -36,14 +42,17 @@ const Cart = () => {
         <Wrapper>
             <Title>Kosár</Title>
             <Begin>
-                <BeginBtn>Vásárlás folytatása...</BeginBtn>
+                <BeginBtn className='btn-slider'>Vásárlás folytatása...</BeginBtn>
                 <BeginTexts>
                 <BeginTxt>Kosár tartalma(1)</BeginTxt>
                 <BeginTxt>Kívánságkosár(1)</BeginTxt>
                 </BeginTexts>
-                <BeginBtn>Fizetés</BeginBtn>
+                <BeginBtn className='btn-slider'>Fizetés</BeginBtn>
             </Begin>
-            <End></End>
+            <End>
+                <Information>information</Information>
+                <Summary>summary</Summary>
+            </End>
         </Wrapper>
         <Footer />
     </Container>
