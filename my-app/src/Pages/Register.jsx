@@ -16,8 +16,8 @@ const Container = styled.div`
     justify-content: center;
 `
 const Wrapper = styled.div`
-    margin-top: 100px;
-    height: 50%;
+    margin-top: 20px;
+    margin-bottom: 20px;
     width: 40%;
     padding: 20px;
     background-color: white;
@@ -43,6 +43,8 @@ const Input = styled.input`
     margin: 20px 10px 0px 0px;
     padding: 8px;
 `
+window.onscroll = () => { window.scroll(0, 0); };
+document.body.style.overflow = "hidden";
 const Register = () => {
   return (
     <Container>
