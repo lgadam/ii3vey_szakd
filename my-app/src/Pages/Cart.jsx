@@ -7,10 +7,12 @@ import bor from '../advbor1.png';
 import Delete from '@mui/icons-material/Remove';
 import Add from '@mui/icons-material/Add';
 import "../Components/Slider.css"
+import { mobile } from "../responsive"
 
 const Container = styled.div``
 const Wrapper = styled.div`
     padding: 20px;
+    ${mobile({ padding: "10px" })}
 `
 const Title = styled.h1`
     text-align: center;
@@ -21,7 +23,9 @@ const Begin = styled.div`
     padding: 20px;
     justify-content: space-between;
 `
-const BeginTexts = styled.div``
+const BeginTexts = styled.div`
+    ${mobile({ display: "none" })}
+`
 const BeginTxt = styled.span`
     text-decoration: underline;
     cursor: pointer;
@@ -32,6 +36,7 @@ const BeginBtn = styled.button``
 const End = styled.div`
     display: flex;
     justify-content: space-between;
+    ${mobile({ flexDirection: "column" })}
 `
 const Information = styled.div`
     flex: 3;
@@ -46,6 +51,7 @@ const Summary = styled.div`
 const Product = styled.div`
     display: flex;
     justify-content: space-between;
+    ${mobile({ flexDirection: "column" })}
 `
 const ProductData = styled.div`
     flex: 2;
@@ -75,8 +81,11 @@ const ProductAmountContainer = styled.div`
     display: flex;
     align-items: center;
     margin-bottom: 30px;
+    ${mobile({ margin: "5px 15px" })}
 `
-const ProductPrice = styled.div``
+const ProductPrice = styled.div`
+    ${mobile({ flexDirection: "column" })}
+`
 const Amount = styled.span`
     height: 50px;
     width: 50px;

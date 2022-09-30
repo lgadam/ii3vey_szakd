@@ -1,4 +1,4 @@
-import Login from "./Pages/Wine";
+import Login from "./Pages/Cart";
 
 const App = () => {
     return <Login />;
