@@ -7,7 +7,7 @@ const Container = styled.div`
     justify-content: space-between;
     padding: 30px;
     display: flex;
-    ${mobile({ padding: "0px" })}
+    ${mobile({ padding: "0px", flexDirection:"column" })}
 `
 
 const Categories = () => {
