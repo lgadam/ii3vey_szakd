@@ -6,6 +6,8 @@ import "../Components/Slider.css"
 import bor from '../advbor1.png';
 import Delete from '@mui/icons-material/Remove';
 import Add from '@mui/icons-material/Add';
+import "../Components/Slider.css"
+
 const Container = styled.div``
 const Wrapper = styled.div`
     padding: 20px;
@@ -36,6 +38,10 @@ const Information = styled.div`
 `
 const Summary = styled.div`
     flex: 1;
+    border: 0.5px solid lightgray;
+    border-radius: 15px;
+    padding: 20px;
+    height: 50vh;
 `
 const Product = styled.div`
     display: flex;
@@ -86,6 +92,16 @@ const Hr = styled.hr`
     border: none;
     height: 2px;
 `
+const SummaryTitle = styled.h1``
+const SummaryItem = styled.div`
+    margin: 30px 0px;
+    display: flex;
+    justify-content: space-between;
+    font-size: ${props=>props.type === "total" && "22px"};
+`
+const SummaryItemText = styled.span``
+const SummaryItemPrice = styled.span``
+const SummaryButton = styled.button``
 const Cart = () => {
   return (
     <Container>
@@ -99,7 +115,6 @@ const Cart = () => {
                 <BeginTxt>Kosár tartalma(1)</BeginTxt>
                 <BeginTxt>Kívánságkosár(1)</BeginTxt>
                 </BeginTexts>
-                <BeginBtn className='btn-slider'>Fizetés</BeginBtn>
             </Begin>
             <End>
                 <Information>
@@ -141,7 +156,22 @@ const Cart = () => {
                         </PriceData>
                     </Product>
                 </Information>
-                <Summary>summary</Summary>
+                <Summary>
+                    <SummaryTitle>Rendelés áttekintés</SummaryTitle>
+                    <SummaryItem>
+                        <SummaryItemText>Részösszeg:</SummaryItemText>
+                        <SummaryItemPrice>2400 ft</SummaryItemPrice>
+                    </SummaryItem>
+                    <SummaryItem>
+                        <SummaryItemText>Szállítási költség:</SummaryItemText>
+                        <SummaryItemPrice>1200 ft</SummaryItemPrice>
+                    </SummaryItem>
+                    <SummaryItem type="total">
+                        <SummaryItemText>Összesen fizetendő:</SummaryItemText>
+                        <SummaryItemPrice>3600 ft</SummaryItemPrice>
+                    </SummaryItem>
+                    <SummaryButton className="btn-slider">Fizetés...</SummaryButton>
+                </Summary>
             </End>
         </Wrapper>
         <Footer />
