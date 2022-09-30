@@ -2,9 +2,11 @@ import styled from "styled-components"
 import logo from './logo_szakdoga.PNG';
 import Facebook from '@mui/icons-material/Facebook';
 import Insta from '@mui/icons-material/Instagram';
+import { mobile } from "../responsive"
 
 const Container = styled.div`
     display: flex;
+    ${mobile({ flexDirection: "column" })}
 `
 const First = styled.div`
     flex: 1;
@@ -17,6 +19,7 @@ const First = styled.div`
 const Second = styled.div`
     flex: 1;
     padding: 20px;
+    ${mobile({ display: "none" })}
 `
 const Third = styled.div`
     flex: 1;
