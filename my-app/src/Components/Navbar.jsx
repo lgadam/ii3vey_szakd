@@ -49,7 +49,7 @@ function Navbar() {
             <MenuItem className='navbar-third-items'>Regisztráció</MenuItem>
             <MenuItem className='navbar-third-items'>Bejelentkezés</MenuItem>
             <MenuItem className='navbar-third-items'>
-                <Badge color="primary">
+                <Badge badgeContent={1} color="success">
                     <ShoppingBasket/>
                 </Badge>
             </MenuItem>
