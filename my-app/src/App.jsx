@@ -1,4 +1,4 @@
-import Login from "./Pages/Register";
+import Login from "./Pages/ProductList";
 
 const App = () => {
     return <Login />;
