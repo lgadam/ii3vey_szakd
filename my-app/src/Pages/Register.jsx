@@ -1,6 +1,7 @@
 import styled from "styled-components"
 import "../Components/Slider.css"
 import register_bg from '../register_bg1.jpg';
+import { mobile } from "../responsive"
 
 const Container = styled.div`
     width: 100vw;
@@ -21,6 +22,7 @@ const Wrapper = styled.div`
     width: 40%;
     padding: 20px;
     background-color: white;
+    ${mobile({ width: "75%" })}
 `
 const Privacy = styled.span`
     font-size: 12px;
