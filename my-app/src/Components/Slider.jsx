@@ -4,8 +4,11 @@ import KeyboardDoubleArrowLeft from '@mui/icons-material/KeyboardDoubleArrowLeft
 import KeyboardDoubleArrowRight from '@mui/icons-material/KeyboardDoubleArrowRightOutlined';
 import { useState } from 'react';
 import { slideritems } from '../data'; 
+import { mobile } from "../responsive"
 
-const Container = styled.div``
+const Container = styled.div`
+    ${mobile({ display: "none" })}
+`
 const Arrow = styled.div`
     left: ${props=> props.direction === "left" && "10px"};
     right: ${props=> props.direction === "right" && "10px"};
