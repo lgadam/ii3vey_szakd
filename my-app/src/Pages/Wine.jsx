@@ -7,12 +7,14 @@ import bor1 from '../bor1.jpg';
 import Delete from '@mui/icons-material/Remove';
 import Add from '@mui/icons-material/Add';
 import "../Components/Slider.css"
+import { mobile } from "../responsive"
 
 const Container = styled.div``
 
 const Wrapper = styled.div`
     display: flex;
     padding: 24px;
+    ${mobile({ padding: "10px",flexDirection:"column"})}
 `
 
 const ImageContainer = styled.div`
@@ -23,11 +25,13 @@ const Image = styled.img`
     height: 400px;
     width: 400px;
     object-fit: cover;
+    ${mobile({ height:"350px"})}
 `
 
 const InformationContainer = styled.div`
     flex: 1;
     padding: 0px 50px;
+    ${mobile({ padding:"10px"})}
 `
 
 const Title = styled.h2`
@@ -49,6 +53,7 @@ const AmountContainer = styled.div`
     align-items: center;
     width: 50%;
     justify-content: space-between;
+    ${mobile({ width:"100%"})}
 `
 
 const Button = styled.button``
