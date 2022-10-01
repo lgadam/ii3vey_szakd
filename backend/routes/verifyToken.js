@@ -9,7 +9,7 @@ const verifyToken = (req, res, next) => {
         req.user = user;
         next();
       });
-    } else {
+    }else {
       return res.status(401).json("A felhasználó nincs hitelesítve");
     }
   };
@@ -18,10 +18,19 @@ const verifyToken = (req, res, next) => {
     verifyToken(req, res, () => {
       if (req.user.id === req.params.id || req.user.isAdmin) {
         next();
-      } else {
+      }else {
+        res.status(403).json("Nincs jogosultság a következő műveletekhez");
+      }
+    });
+  };
+  const verifyTokenAndAdmin = (req, res, next) => {
+    verifyToken(req, res, () => {
+      if (req.user.isAdmin) {
+        next();
+      }else {
         res.status(403).json("Nincs jogosultság a következő műveletekhez");
       }
     });
   };
 
-module.exports = {verifyToken,verifyTokenAndAuthorization};
+module.exports = {verifyTokenAndAdmin,verifyToken,verifyTokenAndAuthorization};
