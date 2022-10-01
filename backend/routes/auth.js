@@ -1,6 +1,8 @@
 const router = require("express").Router();
 const User = require("../models/User");
 const CryptoJS = require("crypto-js");
+const jwt = require("jsonwebtoken");
+
 //regisztráció
 router.post("/register", async (req,res)=>{
     const newUser = new User({
@@ -24,10 +26,20 @@ router.post("/login", async (req,res) =>{
             user.password,
             process.env.PASSWD_SECRT
         );
-        const password = HashedPassword.toString(CryptoJS.enc.Utf8);
-        if(password !== req.body.password) return res.status(401).json("Helytelen adatok");
+        const OriginalPwd = HashedPassword.toString(CryptoJS.enc.Utf8);
+        if(OriginalPwd !== req.body.password) return res.status(401).json("Helytelen adatok");
 
-        res.status(200).json(user);
+        const accessToken = jwt.sign(
+        {
+            id:user._id,
+            isAdmin: user.isAdmin,
+        }, 
+        process.env.JWT_SECRT,
+        {expiresIn:"3d"});
+        
+        const { password, ...others} = user._doc;
+
+        res.status(200).json({...others, accessToken});
     }catch(err){
         res.status(500).json(err);    
     }
