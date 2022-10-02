@@ -63,5 +63,32 @@ router.get("/", verifyTokenAndAdmin, async (req,res)=>{
   }
 });
 
+//id stat
+
+router.get("/stat", verifyTokenAndAdmin, async (req,res) =>{
+  const date = new Date();
+  const previousYear = new Date(date.setFullYear(date.getFullYear()-1));
+  try{
+    //előző évi felhasználók
+    const data = await User.aggregate([
+      {$match: {createdAt: {$gte: previousYear}}},
+      {
+        $project:{
+          month: {$month : "$createdAt"},
+        },
+      },
+      {
+        $group:{
+          _id: "$month",
+          total:{$sum: 1},
+        },
+      },
+    ]);
+    
+    res.status(200).json(data);
+  }catch(err){
+    res.status(500).json(err);
+  }
+})
 
 module.exports = router;
