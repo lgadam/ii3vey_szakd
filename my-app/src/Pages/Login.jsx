@@ -47,8 +47,6 @@ const Input = styled.input`
     margin: 10px 0px 0px 0px;
     padding: 8px;
 `
-window.onscroll = () => { window.scroll(0, 0); };
-document.body.style.overflow = "hidden";
 
 const Login = () => {
   return (
