@@ -37,16 +37,19 @@ export const categories = [
         id: 1,
         image: voros,
         title: "Vörös borok",
+        cat:"vorosbor",
     },
     {
         id: 2,
         image: feher,
         title: "Fehér borok",
+        cat:"feherbor",
     },
     {
         id: 3,
         image: roze,
         title: "Rozé borok",
+        cat:"roze",
     }
 ]
 export const advantagedProducts = [
