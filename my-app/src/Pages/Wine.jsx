@@ -3,11 +3,16 @@ import Announcement from "../Components/Announcement"
 import Footer from "../Components/Footer"
 import GuideMail from "../Components/GuideMail"
 import Navbar from "../Components/Navbar"
-import bor1 from '../bor1.jpg';
 import Delete from '@mui/icons-material/Remove';
 import Add from '@mui/icons-material/Add';
 import "../Components/Slider.css"
 import { mobile } from "../responsive"
+import {useLocation} from "react-router-dom"
+import { useState } from "react"
+import { useEffect } from "react"
+import { publicRequest } from "../requestMethods"
+import { addProduct } from "../redux/cartRedux";
+import { useDispatch } from "react-redux";
 
 const Container = styled.div``
 
@@ -70,24 +75,56 @@ const Amount = styled.span`
 `
 
 const Wine = () => {
+  const location = useLocation();
+  const id = location.pathname.split("/")[2];
+  const [product,setProuduct] = useState({});
+  const [quantity,setQuantity] = useState(1);
+  const dispatch = useDispatch();
+  
+  useEffect(() => {
+    const getProduct = async () =>{
+     try{
+        const res = await publicRequest.get("/products/find/"+id);
+        setProuduct(res.data);
+     } catch{
+
+     } 
+    };
+    getProduct();
+  },[id]);
+
+  const handleQuantity = (type) => {
+    if(type === "del"){
+        quantity > 1 && setQuantity(quantity-1);
+    } else{
+        quantity < 100 && setQuantity(quantity+1);
+    }
+  };
+
+  const handleClick = () => {
+    dispatch(
+      addProduct({ product, quantity, price:product.price*quantity })
+    );
+  };
+
   return (
     <Container>
         <Navbar/>
         <Announcement/>
         <Wrapper>
             <ImageContainer>
-                <Image src={bor1}/>
+                <Image src={product.image}/>
             </ImageContainer>
             <InformationContainer>
-                <Title>Lafi Fruit</Title>
-                <Description>Ez egy teszt szöveg... ide kerül a leírás</Description>
-                <Cost>1200 Ft</Cost>
+                <Title>{product.title}</Title>
+                <Description>{product.description} Fajta: {product.type}</Description>
+                <Cost>{product.price} Ft</Cost>
             <AddContainer>
                 <AmountContainer>
-                    <Delete />
-                    <Amount>0</Amount>
-                    <Add />
-                    <Button className="btn-slider">Kosárba helyezés</Button>
+                    <Delete onClick={()=>handleQuantity("del")} />
+                    <Amount>{quantity}</Amount>
+                    <Add onClick={()=>handleQuantity("add")}/>
+                    <Button className="btn-slider" onClick={handleClick}>Kosárba helyezés</Button>
                 </AmountContainer>
             </AddContainer>
             </InformationContainer>

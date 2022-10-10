@@ -1,7 +1,9 @@
+import "./Slider.css";
 import styled from "styled-components"
 import ShoppingBasketIcon from '@mui/icons-material/ShoppingBasket';
 import SearchOutlined from "@mui/icons-material/SearchOutlined";
 import FavoriteIcon from '@mui/icons-material/Favorite';
+import { Link } from "react-router-dom";
 
 const InfoContainer = styled.div`
     opacity: 0;
@@ -75,7 +77,9 @@ const ProductItem = ({item}) => {
             <FavoriteIcon />
         </Icon>
         <Icon>
+            <Link to={`/product/${item._id}`} key={item.id} className="link-search">
             <SearchOutlined />
+            </Link>
         </Icon>
       </InfoContainer>
     </Container>

@@ -5,6 +5,7 @@ import Search from '@mui/icons-material/SearchOutlined';
 import Badge from '@mui/material/Badge';
 import ShoppingBasket from '@mui/icons-material/ShoppingBasketOutlined';
 import { mobile } from "../responsive"
+import { useSelector } from 'react-redux';
 
 const Container = styled.div`
   ${mobile({ height: "50px" })}
@@ -34,6 +35,7 @@ const MenuItem = styled.div`
 `
 
 function Navbar() {
+  const quantity = useSelector(state=>state.cart.quantity);
   return (
     <Container className='navbar-container'>
       <Wrapper className='navbar-wrapper'>
@@ -49,7 +51,7 @@ function Navbar() {
             <MenuItem className='navbar-third-items'>Regisztráció</MenuItem>
             <MenuItem className='navbar-third-items'>Bejelentkezés</MenuItem>
             <MenuItem className='navbar-third-items'>
-                <Badge badgeContent={1} color="success">
+                <Badge badgeContent={quantity} color="success">
                     <ShoppingBasket/>
                 </Badge>
             </MenuItem>

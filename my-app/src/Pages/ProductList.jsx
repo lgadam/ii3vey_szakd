@@ -53,7 +53,6 @@ const Logo = styled.img`
 const ProductList = () => {
   const location = useLocation();
   const cat = location.pathname.split("/")[2];
-  const [sort,setSort] = useState("newest");
   const [filters, setFilters] = useState({});
 
   const handleFilters = (e) => {
@@ -78,16 +77,8 @@ const ProductList = () => {
                     <Option>feledes</Option>
                 </Select>
             </Filter>
-            <Filter>
-                <FilterSearch>Rendezés..</FilterSearch>
-                <Select onChange={(e) => setSort(e.target.value)}>
-                    <Option value="newest">Új termékek</Option>
-                    <Option value="desc">Ár (csökkenő)</Option>
-                    <Option value="asc">Ár (növekvő)</Option>
-                </Select>
-            </Filter>
         </FilterBar>
-        <Products cat={cat} sort={sort} filters={filters} />
+        <Products cat={cat} filters={filters} />
         <GuideMail/>
         <Footer/>
     </Container>
