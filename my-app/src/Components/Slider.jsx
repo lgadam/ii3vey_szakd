@@ -5,9 +5,15 @@ import KeyboardDoubleArrowRight from '@mui/icons-material/KeyboardDoubleArrowRig
 import { useState } from 'react';
 import { slideritems } from '../data'; 
 import { mobile } from "../responsive"
+import info_bg from '../Components/info_background.jpg';
 
 const Container = styled.div`
     ${mobile({ display: "none" })}
+    background: linear-gradient(
+        rgba(140, 67, 67, 0.5),
+        rgba(140, 67, 67, 0.5)
+    ),
+    url(${info_bg});
 `
 const Arrow = styled.div`
     left: ${props=> props.direction === "left" && "10px"};
@@ -27,17 +33,23 @@ const Slide = styled.div`
     background-color: #${props=>props.bg};
 `;
 const ImageContainer = styled.div`
+    margin-top: 200px;
     height: 100%;
     flex: 1;
+    justify-content: center;
+    text-align: center;
 `;
 
 const Image = styled.img`
-    height: 80%;
+    height: 400px;
+    width: 400px;
     object-fit: cover;
 `;
 const InfoContainer = styled.div`
     flex: 1;
-    padding:50px;
+    padding: 50px;
+    background-color: #e9fbf3;
+    margin-bottom: 120px;
 `;
 const Title = styled.h1`
     font-size: 64px;

@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 import "./CategoryItem.css";
 import { mobile } from "../responsive"
+import { Link } from 'react-router-dom';
 
 const Container = styled.div`
     position: relative;
@@ -18,18 +19,22 @@ const Image = styled.img`
 const InfoContainer = styled.div`
     position: absolute;
 `
-const Title = styled.h1``
+const Title = styled.h1`
+    color:black;
+`
 const Button = styled.button``
 
 function CategoryItem({item}) {
   return (
-    <Container>
-        <Image src={item.image}/>
-        <InfoContainer>
-            <Title>{item.title}</Title>
-            <Button className='btn-categoryItem'>Mutass többet</Button>
-        </InfoContainer>
-    </Container>
+    <Link to={`/products/${item.cat}`}>
+        <Container>
+            <Image src={item.image}/>
+            <InfoContainer>
+                <Title>{item.title}</Title>
+                <Button className='btn-categoryItem'>Mutass többet</Button>
+            </InfoContainer>
+        </Container>
+    </Link> 
   )
 }
 

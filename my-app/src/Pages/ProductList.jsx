@@ -5,6 +5,9 @@ import Products from "../Components/Products"
 import GuideMail from "../Components/GuideMail"
 import Footer from "../Components/Footer"
 import { mobile } from "../responsive"
+import { useLocation } from "react-router-dom"
+import { useState } from "react"
+import logo from '../Components/logo_szakdoga.PNG';
 
 const Container = styled.div`
 
@@ -35,35 +38,56 @@ const Select = styled.select`
 const Option = styled.option`
 
 `
+const LogoContainer = styled.div`
+    padding: 40px 0px;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    background-color: #e9fbf3;
+`
+const Logo = styled.img`
+    width: 200px;
+    height: 200px;
+`
 
 const ProductList = () => {
+  const location = useLocation();
+  const cat = location.pathname.split("/")[2];
+  const [sort,setSort] = useState("newest");
+  const [filters, setFilters] = useState({});
+
+  const handleFilters = (e) => {
+    const value = e.target.value;
+    setFilters({
+      ...filters,
+      [e.target.name]: value,
+    });
+  };
   return (
     <Container>
         <Announcement />
         <Navbar />
-        <Title>Termékek</Title>
+        <LogoContainer><Logo img src={logo} /></LogoContainer>
+        <Title>{cat}</Title>
         <FilterBar>
             <Filter>
-                <FilterSearch>Keresés a termékekre..</FilterSearch>
-                <Select>
-                    <Option disabled selected>
-                        Borok
-                    </Option>
-                    <Option>Sauvignon</Option>
-                    <Option>Bikavér</Option>
-                    <Option>Porto</Option>
+            <FilterSearch>Fajták:</FilterSearch>
+                <Select name="type" onChange={handleFilters}>
+                    <Option>edes</Option>
+                    <Option>szaraz</Option>
+                    <Option>feledes</Option>
                 </Select>
             </Filter>
             <Filter>
                 <FilterSearch>Rendezés..</FilterSearch>
-                <Select>
-                    <Option selected>Új termékek</Option>
-                    <Option>Ár (csökkenő)</Option>
-                    <Option>Ár (növekvő)</Option>
+                <Select onChange={(e) => setSort(e.target.value)}>
+                    <Option value="newest">Új termékek</Option>
+                    <Option value="desc">Ár (csökkenő)</Option>
+                    <Option value="asc">Ár (növekvő)</Option>
                 </Select>
             </Filter>
         </FilterBar>
-        <Products/>
+        <Products cat={cat} sort={sort} filters={filters} />
         <GuideMail/>
         <Footer/>
     </Container>
