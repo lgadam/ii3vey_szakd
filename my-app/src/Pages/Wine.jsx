@@ -79,6 +79,7 @@ const Wine = () => {
   const id = location.pathname.split("/")[2];
   const [product,setProuduct] = useState({});
   const [quantity,setQuantity] = useState(1);
+  const type = product.type;
   const dispatch = useDispatch();
   
   useEffect(() => {
@@ -103,7 +104,7 @@ const Wine = () => {
 
   const handleClick = () => {
     dispatch(
-      addProduct({ product, quantity, price:product.price*quantity })
+      addProduct({ ...product, quantity, type })
     );
   };
 

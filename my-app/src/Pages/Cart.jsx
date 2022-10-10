@@ -3,11 +3,18 @@ import Footer from '../Components/Footer'
 import Announcement from '../Components/Announcement'
 import styled from 'styled-components'
 import "../Components/Slider.css"
-import bor from '../advbor1.png';
 import Delete from '@mui/icons-material/Remove';
 import Add from '@mui/icons-material/Add';
 import "../Components/Slider.css"
 import { mobile } from "../responsive"
+import { useSelector } from 'react-redux'
+import StripeCheckout from 'react-stripe-checkout'
+import { useState } from 'react'
+import { useEffect } from 'react'
+import { userRequest } from '../requestMethods'
+import { useNavigate } from "react-router-dom";
+
+const KEY = process.env.REACT_APP_STRIPE_KEY;
 
 const Container = styled.div``
 const Wrapper = styled.div`
@@ -110,8 +117,29 @@ const SummaryItem = styled.div`
 `
 const SummaryItemText = styled.span``
 const SummaryItemPrice = styled.span``
-const SummaryButton = styled.button``
+const Button = styled.button``
 const Cart = () => {
+  const [stripeToken, setStripeToken] = useState(null);
+  const navigate = useNavigate();
+  const cart = useSelector(state=>state.cart);
+  const onToken = (token) => {
+    setStripeToken(token);
+  };
+  
+  useEffect(() => {
+    const makeRequest = async ()=>{
+        try{
+            const res = await userRequest.post("/checkout/payment",{
+                tokenId:stripeToken.id,
+                amount:cart.total*100, 
+            });
+            navigate("/success", { state: { stripeData: res.data, products: cart} });
+        } catch{
+
+        }
+    };
+    stripeToken && makeRequest();
+  },[stripeToken, cart, cart.total, navigate]);
   return (
     <Container>
         <Navbar />
@@ -127,59 +155,53 @@ const Cart = () => {
             </Begin>
             <End>
                 <Information>
-                    <Product>
+                    {cart.products.map(product=>(
+                    <Product key={product._id}>
                         <ProductData>
-                            <Image src={bor} />
+                            <Image src={product.image}/>
                             <Datas>
-                                <ProductName><b>Termék:</b>Lafiesta fruit</ProductName>
-                                <ProductId><b>Azonosító:</b>12345678</ProductId>
-                                <ProductType><b>Fajta:</b>fehér bor</ProductType>  
+                                <ProductName><b>Termék:</b>{product.title}</ProductName>
+                                <ProductId><b>Azonosító:</b>{product._id}</ProductId>
+                                <ProductType><b>Fajta:</b>{product.type}</ProductType>  
                             </Datas>
                         </ProductData>
                         <PriceData>
                             <ProductAmountContainer>
                                 <Delete />
-                                <Amount>1</Amount>
+                                <Amount>{product.quantity}</Amount>
                                 <Add />
                             </ProductAmountContainer>
-                            <ProductPrice>1200 ft</ProductPrice>
+                            <ProductPrice>{product.price*product.quantity} ft</ProductPrice>
                         </PriceData>
-                    </Product>
+                    </Product>))};
                     <Hr/>
-                    <Product>
-                        <ProductData>
-                            <Image src={bor} />
-                            <Datas>
-                                <ProductName><b>Termék:</b>Lafiesta fruit</ProductName>
-                                <ProductId><b>Azonosító:</b>12345678</ProductId>
-                                <ProductType><b>Fajta:</b>fehér bor</ProductType>  
-                            </Datas>
-                        </ProductData>
-                        <PriceData>
-                            <ProductAmountContainer>
-                                <Delete />
-                                <Amount>1</Amount>
-                                <Add />
-                            </ProductAmountContainer>
-                            <ProductPrice>1200 ft</ProductPrice>
-                        </PriceData>
-                    </Product>
                 </Information>
                 <Summary>
                     <SummaryTitle>Rendelés áttekintés</SummaryTitle>
                     <SummaryItem>
                         <SummaryItemText>Részösszeg:</SummaryItemText>
-                        <SummaryItemPrice>2400 ft</SummaryItemPrice>
+                        <SummaryItemPrice>{cart.total} ft</SummaryItemPrice>
                     </SummaryItem>
                     <SummaryItem>
                         <SummaryItemText>Szállítási költség:</SummaryItemText>
-                        <SummaryItemPrice>1200 ft</SummaryItemPrice>
+                        <SummaryItemPrice>Ingyenes</SummaryItemPrice>
                     </SummaryItem>
                     <SummaryItem type="total">
                         <SummaryItemText>Összesen fizetendő:</SummaryItemText>
-                        <SummaryItemPrice>3600 ft</SummaryItemPrice>
+                        <SummaryItemPrice>{cart.total} ft</SummaryItemPrice>
                     </SummaryItem>
-                    <SummaryButton className="btn-slider">Fizetés...</SummaryButton>
+                    <StripeCheckout
+                        name="LgAdam Wines"
+                        billingAddress
+                        shippingAddress
+                        description={`A fizetendő összeg ${cart.total}Ft`}
+                        amount={cart.total * 100}
+                        currency="HUF"
+                        token={onToken}
+                        stripeKey={KEY}
+                        >
+                        <Button className="btn-slider">Fizetés</Button>
+                    </StripeCheckout>
                 </Summary>
             </End>
         </Wrapper>
