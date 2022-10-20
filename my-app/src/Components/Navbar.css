@@ -1,6 +1,6 @@
 .navbar-container{
     height: 80px;
-    background-color: #E0E0E0;
+    background-color: #e6cbcb;
 }
 .navbar-wrapper{
     padding: 10px 20px;
@@ -45,4 +45,7 @@
 }
 .navbar-third-items{
     margin-left: 25px;
+}
+.navbar-basket{
+    color:black;
 }

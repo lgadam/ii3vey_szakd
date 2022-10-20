@@ -54,7 +54,7 @@ function Navbar() {
             <Link to="/cart">
               <MenuItem className='navbar-third-items'>
                   <Badge badgeContent={quantity} color="success">
-                      <ShoppingBasket/>
+                      <ShoppingBasket className='navbar-basket'/>
                   </Badge>
               </MenuItem>
             </Link>

@@ -1,7 +1,10 @@
+import { useState } from "react";
 import styled from "styled-components"
 import "../Components/Slider.css"
+import { login } from "../redux/apiCalls";
 import login_bg from '../register_bg1.jpg';
-import { mobile } from "../responsive"
+import { mobile } from "../responsive";
+import { useDispatch, useSelector } from "react-redux";
 
 const Container = styled.div`
     width: 100vw;
@@ -40,6 +43,9 @@ const Form = styled.form`
 `
 const Button = styled.button`
     margin: 20px 20px;
+    &:disabled{
+        cursor: wait;
+    }
 `
 const Input = styled.input`
     flex: 1;
@@ -47,16 +53,30 @@ const Input = styled.input`
     margin: 10px 0px 0px 0px;
     padding: 8px;
 `
+const Error = styled.span`
+    padding-top: 5px;
+    color:red;
+`
 
 const Login = () => {
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const dispatch = useDispatch();
+  const {isFetching,error} = useSelector(state => state.user);
+
+  const handleClick = (e) => {
+    e.preventDefault();
+    login(dispatch,{username, password});
+  }
   return (
     <Container>
       <Wrapper>
             <Title>Bejelentkezés</Title>
             <Form>
-                <Input placeholder="felhasználónév" />
-                <Input placeholder="jelszó" />
-                <Button className="btn-slider">Belépés</Button>
+                <Input placeholder="felhasználónév" onChange={(e)=>setUsername(e.target.value)}/>
+                <Input placeholder="jelszó" type="password" onChange={(e)=>setPassword(e.target.value)}/>
+                <Button className="btn-slider" onClick={handleClick} disabled={isFetching}>Belépés</Button>
+                { error && <Error>Hiba történt a bejelentkezés során..</Error>}
                 <Link>Elfelejtetted a jelszavad? itt kérhetsz emlékeztetőt</Link>
                 <Link>Ha még nincs felhasználód, regisztrálj itt</Link>
             </Form>

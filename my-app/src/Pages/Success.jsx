@@ -1,14 +1,21 @@
-import { useLocation } from "react-router-dom"
-
+import styled from "styled-components"
+import "../Components/Slider.css";
 
 const Success = () => {
-  const location = useLocation();
 
-  console.log(location);
+  const Container = styled.div`
+    margin-top: 20px;
+    margin-bottom: 20px;
+    width: 40%;
+    padding: 20px;
+    background-color: white;
+  `
+  const Button = styled.button``
+
   return (
-    <div>
-      sikeres vásárlás
-    </div>
+    <Container>
+      <Button className="btn-slider">Vissza a főoldalra</Button>
+    </Container>
   )
 }
 
