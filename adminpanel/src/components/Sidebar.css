@@ -1,0 +1,14 @@
+.listItem{
+    padding: 8px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    border-radius: 5px;
+}
+.listItem.active{
+    background-color: #2cbc7b;
+}
+.listItemIcon{
+    margin-right: 5px;
+    font-size: 20px !important;
+}

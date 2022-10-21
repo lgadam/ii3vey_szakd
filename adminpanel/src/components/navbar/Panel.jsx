@@ -8,6 +8,9 @@ const TopPanel = styled.div`
   width: 100%;
   height: 60px;
   background-color: white;
+  position: sticky;
+  top: 0;
+  z-index: 999;
 `
 const Wrapper = styled.div`
   height: 100%;
