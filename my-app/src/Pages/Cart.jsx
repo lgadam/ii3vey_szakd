@@ -173,7 +173,7 @@ const Cart = () => {
                             </ProductAmountContainer>
                             <ProductPrice>{product.price*product.quantity} ft</ProductPrice>
                         </PriceData>
-                    </Product>))};
+                    </Product>))}
                     <Hr/>
                 </Information>
                 <Summary>
