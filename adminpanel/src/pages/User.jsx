@@ -142,7 +142,7 @@ export default function User() {
     <Container>
         <TitleContainer>
             <Title>Felhasználó szerkesztése</Title>
-            <Link to="addUser">
+            <Link to="/addUser">
                 <AddButton>Létrehozás</AddButton>
             </Link>
         </TitleContainer>

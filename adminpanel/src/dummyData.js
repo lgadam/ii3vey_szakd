@@ -62,3 +62,18 @@ export const userData = [
     { id: 3, name: 'Bor3', image:"https://i.ibb.co/PFFtcMr/bor3.jpg",stock:30,status:"aktív",price:"2400Ft",},
     { id: 4, name: 'Bor4', image:"https://i.ibb.co/PFFtcMr/bor3.jpg",stock:40,status:"aktív",price:"2400Ft",},
   ];
+
+  export const productData = [
+    {
+      name: 'Január',
+      "Sales": 50,
+    },
+    {
+        name: 'Február',
+        "Sales": 80,
+      },
+      {
+        name: 'Március',
+        "Sales": 70,
+      },
+  ];
