@@ -9,6 +9,7 @@ import {
   Routes,
   Route,
 } from "react-router-dom";
+import AddUser from "./pages/AddUser";
 const Container = styled.div`
   display: flex;
   margin-top: 10px;
@@ -28,6 +29,9 @@ function App() {
           </Routes>
           <Routes>
               <Route path="/user/:userId" index element={<User />} />
+          </Routes>
+          <Routes>
+              <Route path="/addUser" index element={<AddUser />} />
           </Routes>
       </Container>
     </Router>

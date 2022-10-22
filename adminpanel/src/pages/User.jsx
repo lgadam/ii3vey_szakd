@@ -6,6 +6,7 @@ import MailIcon from '@mui/icons-material/Mail';
 import PlaceIcon from '@mui/icons-material/Place';
 import UploadFileIcon from '@mui/icons-material/UploadFile';
 import logo from '../components/navbar/panel_logo.PNG';
+import { Link } from "react-router-dom";
 
 const Container = styled.div`
     flex: 4;
@@ -141,7 +142,9 @@ export default function User() {
     <Container>
         <TitleContainer>
             <Title>Felhasználó szerkesztése</Title>
-            <AddButton>Létrehozás</AddButton>
+            <Link to="addUser">
+                <AddButton>Létrehozás</AddButton>
+            </Link>
         </TitleContainer>
         <UserContainer>
             <UserDisplay>
