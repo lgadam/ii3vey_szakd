@@ -33,7 +33,7 @@ const columns = [
       return(
       <>
         <UserListEdit className="userListEdit">Szerkesztés</UserListEdit>
-        <DeleteIcon />
+        <DeleteIcon className="userListDelete"/>
       </>
       )
     }
@@ -55,6 +55,7 @@ export default function UserList() {
         rows={rows}
         columns={columns}
         pageSize={5}
+        disableSelectionOnClick
         rowsPerPageOptions={[5]}
         checkboxSelection
       />
