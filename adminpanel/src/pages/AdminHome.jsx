@@ -1,6 +1,8 @@
 import styled from "styled-components"
 import Charts from "../components/Charts"
 import FeaturedInfo from "../components/FeaturedInfo"
+import WidgetLarge from "../components/WidgetLarge";
+import WidgetSmall from "../components/WidgetSmall";
 import { userData } from "../dummyData";
 
 const Home = styled.div`
@@ -16,7 +18,10 @@ export default function AdminHome() {
     <Home>
       <FeaturedInfo />
       <Charts data={userData} title="Felhasználó statisztika" dataKey="Active User"/>
-      <HomeWidgets></HomeWidgets>
+      <HomeWidgets>
+        <WidgetSmall />
+        <WidgetLarge />
+      </HomeWidgets>
     </Home>
   )
 }
