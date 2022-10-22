@@ -93,7 +93,11 @@ const ProductFormLeft = styled.div`
     flex-direction: column;
 `
 
-const ProductFormRight = styled.div``
+const ProductFormRight = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+`
 
 const ProductFormLabel = styled.label`
     margin-bottom: 10px;
@@ -113,17 +117,27 @@ const ProductFormSelect = styled.select`
 
 const ProductFormOption = styled.option``
 
-const ProductUpload = styled.div``
+const ProductUpload = styled.div`
+    display: flex;
+    align-items: center;
+`
 
 const ProductUploadImg = styled.img`
     height: 100px;
     width: 100px;
-    
+    border-radius: 10px;
+    object-fit: cover;
 `
 
 const ProductUploadLabel = styled.label``
 
-const ProductButton = styled.button``
+const ProductButton = styled.button`
+    border: none;
+    padding: 5px;
+    border-radius: 5px;
+    background-color: #6fdcab;
+    cursor: pointer;
+`
 
 export default function Product() {
   return (
