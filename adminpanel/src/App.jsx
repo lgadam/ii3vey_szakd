@@ -1,12 +1,11 @@
 import Panel from "./components/navbar/Panel";
 import styled from "styled-components"
 import Sidebar from "./components/Sidebar";
+import AdminHome from "./pages/AdminHome";
 
 const Container = styled.div`
   display: flex;
-`
-const Others = styled.div`
-  flex:4;
+  margin-top: 10px;
 `
 
 function App() {
@@ -15,7 +14,7 @@ function App() {
       <Panel />
       <Container>
         <Sidebar />
-        <Others>other page</Others>
+          <AdminHome />
       </Container>
     </div>
   );

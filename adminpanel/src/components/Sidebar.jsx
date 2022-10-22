@@ -8,7 +8,6 @@ import AccountBalanceIcon from '@mui/icons-material/AccountBalance';
 import MailIcon from '@mui/icons-material/Mail';
 import QuestionAnswerIcon from '@mui/icons-material/QuestionAnswer';
 import EditIcon from '@mui/icons-material/Edit';
-
 import "./Sidebar.css";
 
 const SideBar = styled.div`
