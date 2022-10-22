@@ -39,6 +39,16 @@ const AddUserSelect = styled.select`
 
 const AddUserOption = styled.option``
 
+const AddUserButton = styled.button`
+    width: 150px;
+    margin-top: 20px;
+    cursor: pointer;
+    border-radius: none;
+    background-color: #6fdcab;
+    border-radius: 10px;
+    padding: 5px 10px;
+`
+
 export default function AddUser() {
   return (
     <Container>
@@ -78,6 +88,7 @@ export default function AddUser() {
                     <AddUserOption value="yes">Igen</AddUserOption>
                     <AddUserOption value="no">Nem</AddUserOption>
                 </AddUserSelect>
+            <AddUserButton>Hozzáadás</AddUserButton>
             </AddUserItem>
         </AddUserForm>
     </Container>
