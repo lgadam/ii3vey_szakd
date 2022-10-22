@@ -9,6 +9,7 @@ import MailIcon from '@mui/icons-material/Mail';
 import QuestionAnswerIcon from '@mui/icons-material/QuestionAnswer';
 import EditIcon from '@mui/icons-material/Edit';
 import "./Sidebar.css";
+import { Link } from "react-router-dom";
 
 const SideBar = styled.div`
     flex: 1;
@@ -80,14 +81,18 @@ export default function Sidebar() {
           </List>
           <Title>Menü</Title>
           <SecondList>
-            <ListItem className="listItem">
-                <PeopleIcon className="listItemIcon"/>
-                Felhasználók
-            </ListItem>
-            <ListItem className="listItem">
-                <WineBarIcon className="listItemIcon"/>
-                Termékek
-            </ListItem>
+            <Link to="/users" className="link">
+                <ListItem className="listItem">
+                    <PeopleIcon className="listItemIcon"/>
+                    Felhasználók
+                </ListItem>
+            </Link>
+            <Link to="/products" className="link">
+                <ListItem className="listItem">
+                    <WineBarIcon className="listItemIcon"/>
+                    Termékek
+                </ListItem>
+            </Link>
             <ListItem className="listItem">
                 <AccountBalanceIcon className="listItemIcon"/>
                 Tranzakciók

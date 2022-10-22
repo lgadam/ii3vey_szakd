@@ -10,6 +10,7 @@ import {
   Route,
 } from "react-router-dom";
 import AddUser from "./pages/AddUser";
+import ProductList from "./pages/ProductList";
 const Container = styled.div`
   display: flex;
   margin-top: 10px;
@@ -32,6 +33,15 @@ function App() {
           </Routes>
           <Routes>
               <Route path="/addUser" index element={<AddUser />} />
+          </Routes>
+          <Routes>
+              <Route path="/products" index element={<ProductList />} />
+          </Routes>
+          <Routes>
+              <Route path="/product/:productId" index element={<User />} />
+          </Routes>
+          <Routes>
+              <Route path="/addProduct" index element={<User />} />
           </Routes>
       </Container>
     </Router>

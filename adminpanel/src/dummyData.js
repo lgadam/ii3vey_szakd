@@ -55,3 +55,10 @@ export const userData = [
     { id: 3, username: 'LgAdam34', email:"lgadam34@gmail.com",status:"aktív",transaction:"2400Ft",},
     { id: 4, username: 'LgAdam67', email:"lgadam67@gmail.com",status:"aktív",transaction:"2400Ft",},
   ];
+
+  export const productRows = [
+    { id: 1, name: 'Bor1', image:"https://i.ibb.co/PFFtcMr/bor3.jpg",stock:10,status:"aktív",price:"2400Ft",},
+    { id: 2, name: 'Bor2', image:"https://i.ibb.co/PFFtcMr/bor3.jpg",stock:20,status:"aktív",price:"2400Ft",},
+    { id: 3, name: 'Bor3', image:"https://i.ibb.co/PFFtcMr/bor3.jpg",stock:30,status:"aktív",price:"2400Ft",},
+    { id: 4, name: 'Bor4', image:"https://i.ibb.co/PFFtcMr/bor3.jpg",stock:40,status:"aktív",price:"2400Ft",},
+  ];
