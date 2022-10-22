@@ -6,3 +6,7 @@
     margin-right: 20px;
     cursor: pointer;
 }
+.userListDelete{
+    color:red !important;
+    cursor: pointer;
+}
