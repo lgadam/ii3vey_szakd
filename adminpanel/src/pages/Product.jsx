@@ -196,7 +196,7 @@ export default function Product() {
                 <ProductFormRight>
                     <ProductUpload>
                         <ProductUploadImg img src="https://i.ibb.co/PFFtcMr/bor3.jpg" />
-                        <ProductUploadLabel fpr="file">
+                        <ProductUploadLabel for="file">
                         <UploadFileIcon />
                         </ProductUploadLabel>
                         <ProductFormInput type="file" id="file" style={{display:"none"}} />
