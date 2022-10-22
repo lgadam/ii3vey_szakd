@@ -66,10 +66,12 @@ export default function Sidebar() {
         <Menu>
           <Title>Kimutatások</Title>
           <List>
+            <Link to="/" className="link">
             <ListItem className="listItem active">
                 <HomeIcon className="listItemIcon"/>
                 Főoldal
             </ListItem>
+            </Link>
             <ListItem className="listItem">
                 <EqualizerIcon className="listItemIcon"/>
                 Statisztika

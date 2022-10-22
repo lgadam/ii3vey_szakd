@@ -12,6 +12,7 @@ import {
 import AddUser from "./pages/AddUser";
 import ProductList from "./pages/ProductList";
 import Product from "./pages/Product";
+import AddProduct from "./pages/AddProduct";
 const Container = styled.div`
   display: flex;
   margin-top: 10px;
@@ -42,7 +43,7 @@ function App() {
               <Route path="/product/:productId" index element={<Product />} />
           </Routes>
           <Routes>
-              <Route path="/addProduct" index element={<User />} />
+              <Route path="/addProduct" index element={<AddProduct />} />
           </Routes>
       </Container>
     </Router>
