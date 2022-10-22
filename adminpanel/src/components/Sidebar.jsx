@@ -21,10 +21,11 @@ const Wrapper = styled.div`
     padding: 20px;
     color:#666666; 
     background-color: #80f4bf;
+    margin-bottom: 10px;
 `
 
 const Menu = styled.div`
-    margin-bottom: 10px;
+    margin-bottom: 20px;
 `
 
 const Title = styled.h3`
@@ -53,6 +54,8 @@ const ListItem = styled.li`
     &:hover{
         background-color: #44d594;
     }
+    padding-bottom: 5px;
+    width: 100%;
 `
 
 export default function Sidebar() {
