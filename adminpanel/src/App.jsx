@@ -3,6 +3,7 @@ import styled from "styled-components"
 import Sidebar from "./components/Sidebar";
 import AdminHome from "./pages/AdminHome";
 import UserList from "./pages/UserList";
+import User from "./pages/User";
 import {
   BrowserRouter as Router,
   Routes,
@@ -24,6 +25,9 @@ function App() {
           </Routes>
           <Routes>
               <Route path="/users" index element={<UserList />} />
+          </Routes>
+          <Routes>
+              <Route path="/user/:userId" index element={<User />} />
           </Routes>
       </Container>
     </Router>
