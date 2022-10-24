@@ -49,12 +49,16 @@ function Navbar() {
         </First>
         <Second className='navbar-elements-second'><Logo>LgAdam Wines</Logo></Second>
         <Third className='navbar-elements-third'>
+            <Link to="/register" className='navbar-link'>
             <MenuItem className='navbar-third-items'>Regisztráció</MenuItem>
+            </Link>
+            <Link to="/login" className='navbar-link'>
             <MenuItem className='navbar-third-items'>Bejelentkezés</MenuItem>
+            </Link>
             <Link to="/cart">
               <MenuItem className='navbar-third-items'>
                   <Badge badgeContent={quantity} color="success">
-                      <ShoppingBasket className='navbar-basket'/>
+                      <ShoppingBasket className='navbar-link'/>
                   </Badge>
               </MenuItem>
             </Link>

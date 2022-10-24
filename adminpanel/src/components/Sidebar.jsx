@@ -4,10 +4,6 @@ import EqualizerIcon from '@mui/icons-material/Equalizer';
 import SellIcon from '@mui/icons-material/Sell';
 import PeopleIcon from '@mui/icons-material/People';
 import WineBarIcon from '@mui/icons-material/WineBar';
-import AccountBalanceIcon from '@mui/icons-material/AccountBalance';
-import MailIcon from '@mui/icons-material/Mail';
-import QuestionAnswerIcon from '@mui/icons-material/QuestionAnswer';
-import EditIcon from '@mui/icons-material/Edit';
 import "./Sidebar.css";
 import { Link } from "react-router-dom";
 
@@ -42,15 +38,6 @@ const SecondList = styled.ul`
     list-style: none;
     padding: 5px;
 `
-const ThirdList = styled.ul`
-    list-style: none;
-    padding: 5px;
-`
-const LastList = styled.ul`
-    list-style: none;
-    padding: 5px;
-`
-
 const ListItem = styled.li`
     &:hover{
         background-color: #44d594;
@@ -95,33 +82,7 @@ export default function Sidebar() {
                     Termékek
                 </ListItem>
             </Link>
-            <ListItem className="listItem">
-                <AccountBalanceIcon className="listItemIcon"/>
-                Tranzakciók
-            </ListItem>
           </SecondList>
-          <Title>Értesítések</Title>
-          <ThirdList>
-            <ListItem className="listItem">
-                <MailIcon className="listItemIcon"/>
-                Email
-            </ListItem>
-            <ListItem className="listItem">
-                <QuestionAnswerIcon className="listItemIcon"/>
-                Visszajelzések
-            </ListItem>
-          </ThirdList>
-          <Title>Kezelés</Title>
-          <LastList>
-            <ListItem className="listItem">
-                <EditIcon className="listItemIcon"/>
-                Adatok kezelése
-            </ListItem>
-            <ListItem className="listItem">
-                <EqualizerIcon className="listItemIcon"/>
-                Statisztika
-            </ListItem>
-          </LastList>
         </Menu>
       </Wrapper>
     </SideBar>

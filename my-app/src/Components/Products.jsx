@@ -41,7 +41,7 @@ const Products = (cat,filters) => {
     <Container>
         {filteredProducts.map(item=>(
             <ProductItem item={item} key={item._id} />
-        ))};
+        ))}
     </Container>
   )
 };

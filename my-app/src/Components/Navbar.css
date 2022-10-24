@@ -46,6 +46,7 @@
 .navbar-third-items{
     margin-left: 25px;
 }
-.navbar-basket{
+.navbar-link{
     color:black;
+    text-decoration: none;
 }
