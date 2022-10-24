@@ -2,6 +2,8 @@ import styled from "styled-components"
 import logo from '../components/navbar/panel_logo.PNG';
 import PageviewIcon from '@mui/icons-material/Pageview';
 import "./WidgetSmall.css";
+import { useEffect, useState } from "react";
+import { userRequest } from "../requestMethods";
 
 const WidgetSm = styled.div`
     flex: 1;
@@ -44,11 +46,6 @@ const WidgetSmUserName = styled.span`
     font-weight: 800;
 `
 
-const WidgetSmUserTitle = styled.span`
-    font-weight: 300;
-    color: #282828;
-`
-
 const WidgetSmButton = styled.button`
     display: flex;
     align-items: center;
@@ -60,34 +57,31 @@ const WidgetSmButton = styled.button`
 `
 
 export default function WidgetSmall() {
+  const [users, setUsers] = useState([]);
+
+  useEffect(() => {
+    const getUsers = async () => {
+      try {
+        const res = await userRequest.get("users/?new=true");
+        setUsers(res.data);
+      } catch {}
+    };
+    getUsers();
+  }, []);
+
   return (
     <WidgetSm>
       <WidgetSmTitle>Új felhasználók</WidgetSmTitle>
       <WidgetSmList>
-        <WidgetSmListItem>
-            <WidgetSmImg img src={logo}/>
+        {users.map(user=>(
+        <WidgetSmListItem key={user._id}>
+            <WidgetSmImg img src={user.img || logo}/>
             <WidgetSmUser>
-                <WidgetSmUserName>lgadam</WidgetSmUserName>
-                <WidgetSmUserTitle>Programtervező Informatikus</WidgetSmUserTitle>
+                <WidgetSmUserName>{user.username}</WidgetSmUserName>
             </WidgetSmUser>
             <WidgetSmButton><PageviewIcon className="widgetSmIcon"/>Megtekintés</WidgetSmButton>
         </WidgetSmListItem>
-        <WidgetSmListItem>
-            <WidgetSmImg img src={logo}/>
-            <WidgetSmUser>
-                <WidgetSmUserName>lgadam</WidgetSmUserName>
-                <WidgetSmUserTitle>Programtervező Informatikus</WidgetSmUserTitle>
-            </WidgetSmUser>
-            <WidgetSmButton><PageviewIcon className="widgetSmIcon"/>Megtekintés</WidgetSmButton>
-        </WidgetSmListItem>
-        <WidgetSmListItem>
-            <WidgetSmImg img src={logo}/>
-            <WidgetSmUser>
-                <WidgetSmUserName>lgadam</WidgetSmUserName>
-                <WidgetSmUserTitle>Programtervező Informatikus</WidgetSmUserTitle>
-            </WidgetSmUser>
-            <WidgetSmButton><PageviewIcon className="widgetSmIcon"/>Megtekintés</WidgetSmButton>
-        </WidgetSmListItem>
+        ))}
       </WidgetSmList>
     </WidgetSm>
   )

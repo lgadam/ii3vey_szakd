@@ -1,9 +1,9 @@
-.widgetLgButton.Elfogadva{
+.widgetLgButton.elfogadva{
     background-color: #2cbc7b;
 }
-.widgetLgButton.Elutasítva{
+.widgetLgButton.elutasítva{
     background-color: red;
 }
-.widgetLgButton.Folyamatban{
+.widgetLgButton.folyamatban{
     background-color: goldenrod;
 }

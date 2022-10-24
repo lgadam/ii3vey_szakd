@@ -1,6 +1,7 @@
 import styled from "styled-components"
 import "./WidgetLarge.css";
-import logo from '../components/navbar/panel_logo.PNG';
+import { useEffect, useState } from "react";
+import { userRequest } from "../requestMethods";
 
 const WidgetLg = styled.div`
   flex: 2;
@@ -30,13 +31,6 @@ const WidgetLgUser = styled.td`
   font-weight: 600px;
 `
 
-const WidgetLgImg = styled.img`
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  object-fit: cover;
-`
-
 const WidgetLgName = styled.span`
   margin-left: 10px;
 `
@@ -58,6 +52,19 @@ const WidgetLgButton = styled.button`
 `
 
 export default function WidgetLarge() {
+  
+  const [orders, setOrders] = useState([]);
+
+  useEffect(() => {
+    const getOrders = async () => {
+      try {
+        const res = await userRequest.get("orders");
+        setOrders(res.data);
+      } catch {}
+    };
+    getOrders();
+  }, []);
+  
   const Button = ({type}) => {
     return <WidgetLgButton className={"widgetLgButton " + type}>{type}</WidgetLgButton>
   }
@@ -71,39 +78,18 @@ export default function WidgetLarge() {
           <WidgetLgTh>Összeg</WidgetLgTh>
           <WidgetLgTh>Állapot</WidgetLgTh>
         </WidgetLgTr>
+        {orders.map(order=>(
         <WidgetLgTr>
           <WidgetLgUser>
-            <WidgetLgImg img src={logo} />
-            <WidgetLgName>Ligárt Ádám</WidgetLgName>
+            <WidgetLgName>{order.userId}</WidgetLgName>
           </WidgetLgUser>
-          <WidgetLgDate>2022.10.22</WidgetLgDate>
-          <WidgetLgAmount>2400 Ft</WidgetLgAmount>
+          <WidgetLgDate>{order.createdAt}</WidgetLgDate>
+          <WidgetLgAmount>{order.amount / 10}Ft</WidgetLgAmount>
           <WidgetLgStatus>
-            <Button type="Elfogadva" />
+            <Button type={order.status} />
           </WidgetLgStatus>
         </WidgetLgTr>
-        <WidgetLgTr>
-          <WidgetLgUser>
-            <WidgetLgImg img src={logo} />
-            <WidgetLgName>Ligárt Ádám</WidgetLgName>
-          </WidgetLgUser>
-          <WidgetLgDate>2022.10.22</WidgetLgDate>
-          <WidgetLgAmount>2400 Ft</WidgetLgAmount>
-          <WidgetLgStatus>
-            <Button type="Elutasítva" />
-          </WidgetLgStatus>
-        </WidgetLgTr>
-        <WidgetLgTr>
-          <WidgetLgUser>
-            <WidgetLgImg img src={logo} />
-            <WidgetLgName>Ligárt Ádám</WidgetLgName>
-          </WidgetLgUser>
-          <WidgetLgDate>2022.10.22</WidgetLgDate>
-          <WidgetLgAmount>2400 Ft</WidgetLgAmount>
-          <WidgetLgStatus>
-            <Button type="Folyamatban" />
-          </WidgetLgStatus>
-        </WidgetLgTr>
+        ))}
       </WidgetLgTable>
     </WidgetLg>
   )
