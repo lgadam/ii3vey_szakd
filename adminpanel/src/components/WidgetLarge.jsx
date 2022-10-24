@@ -79,7 +79,7 @@ export default function WidgetLarge() {
           <WidgetLgTh>Állapot</WidgetLgTh>
         </WidgetLgTr>
         {orders.map(order=>(
-        <WidgetLgTr>
+        <WidgetLgTr key={order._id}>
           <WidgetLgUser>
             <WidgetLgName>{order.userId}</WidgetLgName>
           </WidgetLgUser>
