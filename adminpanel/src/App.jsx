@@ -13,39 +13,49 @@ import AddUser from "./pages/AddUser";
 import ProductList from "./pages/ProductList";
 import Product from "./pages/Product";
 import AddProduct from "./pages/AddProduct";
+import Login from "./pages/Login";
+
 const Container = styled.div`
   display: flex;
   margin-top: 10px;
 `
 
 function App() {
+  const admin = JSON.parse(JSON.parse(localStorage.getItem("persist:root")).user).currentUser.isAdmin; 
   return (
     <Router>
-      <Panel />
-      <Container>
-        <Sidebar />
-          <Routes>
-              <Route exact path="/" index element={<AdminHome />} />
-          </Routes>
-          <Routes>
-              <Route path="/users" index element={<UserList />} />
-          </Routes>
-          <Routes>
-              <Route path="/user/:userId" index element={<User />} />
-          </Routes>
-          <Routes>
-              <Route path="/addUser" element={<AddUser />} />
-          </Routes>
-          <Routes>
-              <Route path="/products" index element={<ProductList />} />
-          </Routes>
-          <Routes>
-              <Route path="/product/:productId" index element={<Product />} />
-          </Routes>
-          <Routes>
-              <Route path="/addProduct" index element={<AddProduct />} />
-          </Routes>
-      </Container>
+      <Routes>
+        <Route path="/login" element={<Login />} />
+      </Routes>
+      { admin && (
+        <>
+          <Panel />
+          <Container>
+            <Sidebar />
+              <Routes>
+                  <Route exact path="/" index element={<AdminHome />} />
+              </Routes>
+              <Routes>
+                  <Route path="/users" index element={<UserList />} />
+              </Routes>
+              <Routes>
+                  <Route path="/user/:userId" index element={<User />} />
+              </Routes>
+              <Routes>
+                  <Route path="/addUser" element={<AddUser />} />
+              </Routes>
+              <Routes>
+                  <Route path="/products" index element={<ProductList />} />
+              </Routes>
+              <Routes>
+                  <Route path="/product/:productId" index element={<Product />} />
+              </Routes>
+              <Routes>
+                  <Route path="/addProduct" index element={<AddProduct />} />
+              </Routes>
+          </Container>
+      </>
+      )}
     </Router>
   );
 }
