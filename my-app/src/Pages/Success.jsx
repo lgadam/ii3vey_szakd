@@ -45,6 +45,7 @@ const Success = () => {
     };
     data && createOrder();
   }, [cart, data, data._id, currentUser]);
+  console.log(orderId);
   return (
     <Container>
       <Wrapper>

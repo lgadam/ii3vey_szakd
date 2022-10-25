@@ -1,12 +1,13 @@
 import styled from "styled-components"
-import TrendingDownIcon from '@mui/icons-material/TrendingDown';
 import MovingIcon from '@mui/icons-material/Moving';
 import "./FeaturedInfo.css";
+import { useEffect, useState } from "react";
+import { userRequest } from "../requestMethods";
 
 const Featured = styled.div`
-    width: 100%;
     display: flex;
     justify-content: space-between;
+    width: 450px;
 `
 
 const FeaturedItem = styled.div`
@@ -46,31 +47,26 @@ const FeaturedSbTitle = styled.span`
 `
 
 export default function FeaturedInfo() {
+  const [income, setIncome] = useState([]);
+  useEffect(() => {
+    const getIncome = async () => {
+        try {
+          const res = await userRequest.get("orders/income");
+          setIncome(res?.data);
+        } catch {}
+      };
+      getIncome();
+  }, []);
   return (
     <Featured>
         <FeaturedItem>
             <FeaturedTitle>Kimutatás</FeaturedTitle>
             <MoneyContainer>
-                <FeaturedMoney>254,000 Ft</FeaturedMoney>
-                <FeaturedMoneyRate>-11,432 Ft<TrendingDownIcon className="featuredIcon negative" /></FeaturedMoneyRate>
+                {income.map(item =>(
+                <FeaturedMoney>{item.total / 10}Ft</FeaturedMoney>))}
+                <FeaturedMoneyRate><MovingIcon className="featuredIcon" /></FeaturedMoneyRate>
             </MoneyContainer>
-            <FeaturedSbTitle>Összevetés az előző havi kimutatással</FeaturedSbTitle>
-        </FeaturedItem>
-        <FeaturedItem>
-            <FeaturedTitle>Eladások</FeaturedTitle>
-            <MoneyContainer>
-                <FeaturedMoney>554,000 Ft</FeaturedMoney>
-                <FeaturedMoneyRate>-2,342 Ft<TrendingDownIcon className="featuredIcon negative" /></FeaturedMoneyRate>
-            </MoneyContainer>
-            <FeaturedSbTitle>Összevetés az előző havi kimutatással</FeaturedSbTitle>
-        </FeaturedItem>
-        <FeaturedItem>
-            <FeaturedTitle>Költség</FeaturedTitle>
-            <MoneyContainer>
-                <FeaturedMoney>132,000 Ft</FeaturedMoney>
-                <FeaturedMoneyRate>+6,342 Ft<MovingIcon className="featuredIcon" /></FeaturedMoneyRate>
-            </MoneyContainer>
-            <FeaturedSbTitle>Összevetés az előző havi kimutatással</FeaturedSbTitle>
+            <FeaturedSbTitle>Havi kimutatás a rendelések beérkezésének összegéről</FeaturedSbTitle>
         </FeaturedItem>
     </Featured>
   )
