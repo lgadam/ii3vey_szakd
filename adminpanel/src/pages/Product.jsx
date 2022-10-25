@@ -1,8 +1,6 @@
 import styled from "styled-components"
-import { Link } from "react-router-dom";
-import Charts from "../components/Charts";
-import {productData} from "../dummyData";
-import UploadFileIcon from '@mui/icons-material/UploadFile';
+import { Link, useLocation } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const Container = styled.div`
     flex: 4;
@@ -23,21 +21,12 @@ const AddButton = styled.button`
     background-color: #6fdcab;
     border-radius: 5px;
     cursor: pointer;
+    margin-left: 300px;
 `
 const ProductTop = styled.div`
     display: flex;
-`
-
-const ProductBottom = styled.div`
-    padding: 20px;
-    margin: 20px;
-    box-shadow: 0px 0px 15px -10px rgba(0, 0, 0, 0.75);
-    margin-right: 20px;
-`
-
-const ProductTopLeft = styled.div`
-    flex: 1;
-    width: 200px;
+    width: 700px;
+    height: 450px;
 `
 
 const ProductTopRight = styled.div`
@@ -53,6 +42,7 @@ const ProductTopRight = styled.div`
 const ProductInfoTop = styled.div`
     display: flex;
     align-items: center;
+    margin-bottom: 50px;
 `
 
 const ProductInfoBottom = styled.div`
@@ -75,6 +65,7 @@ const ProductInfoItem = styled.div`
     width: 150px;
     display: flex;
     justify-content: space-between;
+    margin-bottom: 20px;
 `
 
 const ProductInfoKey = styled.span``
@@ -83,128 +74,47 @@ const ProductInfoValue = styled.span`
     font-weight: 400;
 `
 
-const ProductForm = styled.form`
-    display: flex;
-    justify-content: space-between;
-`
-
-const ProductFormLeft = styled.div`
-    display: flex;
-    flex-direction: column;
-`
-
-const ProductFormRight = styled.div`
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-`
-
-const ProductFormLabel = styled.label`
-    margin-bottom: 10px;
-    color: #4444;
-`
-
-const ProductFormInput = styled.input`
-    margin-bottom: 10px;
-    border: none;
-    padding: 5px;
-    border-bottom: 1px solid gray;
-`
-
-const ProductFormSelect = styled.select`
-    margin-bottom: 10px;
-`
-
-const ProductFormOption = styled.option``
-
-const ProductUpload = styled.div`
-    display: flex;
-    align-items: center;
-`
-
-const ProductUploadImg = styled.img`
-    height: 100px;
-    width: 100px;
-    border-radius: 10px;
-    object-fit: cover;
-`
-
-const ProductUploadLabel = styled.label``
-
-const ProductButton = styled.button`
-    border: none;
-    padding: 5px;
-    border-radius: 5px;
-    background-color: #6fdcab;
-    cursor: pointer;
-`
-
 export default function Product() {
+const location = useLocation();
+const productId = location.pathname.split("/")[2];
+
+const product = useSelector((state) =>
+    state.product.products.find((product) => product._id === productId)
+); 
   return (
     <Container>
         <TitleContainer>
             <Title>Termék</Title>
-            <Link to="/addProduct">
-                <AddButton>Hozzáadás</AddButton>
-            </Link>
         </TitleContainer>
         <ProductTop>
-            <ProductTopLeft>
-                <Charts data={productData} dataKey="Sales" title="Eladások lebontva"/>
-            </ProductTopLeft>
             <ProductTopRight>
                 <ProductInfoTop>
-                    <ProductInfoImg img src="https://i.ibb.co/PFFtcMr/bor3.jpg"/>
-                    <ProductInfoName>Rozé 2019 kiadás</ProductInfoName>
+                    <ProductInfoImg img src={product.image}/>
+                    <ProductInfoName>{product.title}</ProductInfoName>
+                    <Link to="/addProduct">
+                        <AddButton>Hozzáadás</AddButton>
+                    </Link>
                 </ProductInfoTop>
                 <ProductInfoBottom>
                     <ProductInfoItem>
                         <ProductInfoKey>Id:</ProductInfoKey>
-                        <ProductInfoValue>420</ProductInfoValue>
+                        <ProductInfoValue>{product._id}</ProductInfoValue>
                     </ProductInfoItem>
                     <ProductInfoItem>
-                        <ProductInfoKey>Eladások:</ProductInfoKey>
-                        <ProductInfoValue>420</ProductInfoValue>
+                        <ProductInfoKey>Típus:</ProductInfoKey>
+                        <ProductInfoValue>{product.type}</ProductInfoValue>
                     </ProductInfoItem>
                     <ProductInfoItem>
-                        <ProductInfoKey>Aktív:</ProductInfoKey>
-                        <ProductInfoValue>Igen</ProductInfoValue>
+                        <ProductInfoKey>Kategória:</ProductInfoKey>
+                        <ProductInfoValue>{product.categories}</ProductInfoValue>
                     </ProductInfoItem>
                     <ProductInfoItem>
                         <ProductInfoKey>Készleten:</ProductInfoKey>
-                        <ProductInfoValue>nem</ProductInfoValue>
+                        <ProductInfoValue>{product.inStock ? "Igen": "Nem"}</ProductInfoValue>
                     </ProductInfoItem>
                 </ProductInfoBottom>
             </ProductTopRight>
         </ProductTop>
-        <ProductBottom>
-            <ProductForm>
-                <ProductFormLeft>
-                    <ProductFormLabel>Termék neve</ProductFormLabel>
-                    <ProductFormInput type="text" placeholder="Rozé 2019 válogatás" />
-                    <ProductFormLabel>Készleten</ProductFormLabel>
-                    <ProductFormSelect name="inStock" id="id">
-                        <ProductFormOption value="yes">Igen</ProductFormOption>
-                        <ProductFormOption value="no">Nem</ProductFormOption>
-                    </ProductFormSelect>
-                    <ProductFormLabel>Aktív</ProductFormLabel>
-                    <ProductFormSelect name="active" id="active">
-                        <ProductFormOption value="yes">Igen</ProductFormOption>
-                        <ProductFormOption value="no">Nem</ProductFormOption>
-                    </ProductFormSelect>    
-                </ProductFormLeft>
-                <ProductFormRight>
-                    <ProductUpload>
-                        <ProductUploadImg img src="https://i.ibb.co/PFFtcMr/bor3.jpg" />
-                        <ProductUploadLabel for="file">
-                        <UploadFileIcon />
-                        </ProductUploadLabel>
-                        <ProductFormInput type="file" id="file" style={{display:"none"}} />
-                    </ProductUpload>
-                    <ProductButton>Frissítés</ProductButton>
-                </ProductFormRight>
-            </ProductForm>
-        </ProductBottom>
     </Container>
   )
 }

@@ -8,6 +8,7 @@ const AddUserTitle = styled.h1``
 const AddUserForm = styled.form`
     display: flex;
     flex-wrap: wrap;
+    box-shadow: 0px 0px 15px -10px rgba(0, 0, 0, 0.75);
 `
 
 const AddUserItem = styled.div`

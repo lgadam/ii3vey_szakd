@@ -40,11 +40,6 @@ export default function ProductList() {
         },
         { field: "inStock", headerName: "Készlet", width: 200 },
         {
-          field: "status",
-          headerName: "Státusz",
-          width: 120,
-        },
-        {
           field: "price",
           headerName: "Ár",
           width: 160,
@@ -56,7 +51,7 @@ export default function ProductList() {
           renderCell: (params) => {
             return (
               <>
-                <Link to={"/product/" + params.row.id}>
+                <Link to={"/product/" + params.row._id}>
                   <button className="productListEdit">Szerkesztés</button>
                 </Link>
                 <DeleteIcon
