@@ -2,3 +2,7 @@
     font-size: 18px;
     margin-right: 5px;
 }
+.widgetLink{
+    text-decoration: none;
+    color: black;
+}

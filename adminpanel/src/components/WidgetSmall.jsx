@@ -4,6 +4,7 @@ import PageviewIcon from '@mui/icons-material/Pageview';
 import "./WidgetSmall.css";
 import { useEffect, useState } from "react";
 import { userRequest } from "../requestMethods";
+import { Link } from "react-router-dom";
 
 const WidgetSm = styled.div`
     flex: 1;
@@ -79,7 +80,9 @@ export default function WidgetSmall() {
             <WidgetSmUser>
                 <WidgetSmUserName>{user.username}</WidgetSmUserName>
             </WidgetSmUser>
-            <WidgetSmButton><PageviewIcon className="widgetSmIcon"/>Megtekintés</WidgetSmButton>
+            <Link to={"/user/"+user._id} className="widgetLink">
+              <WidgetSmButton><PageviewIcon className="widgetSmIcon"/>Megtekintés</WidgetSmButton>
+            </Link>
         </WidgetSmListItem>
         ))}
       </WidgetSmList>

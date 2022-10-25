@@ -75,12 +75,12 @@ const ProductInfoValue = styled.span`
 `
 
 export default function Product() {
-const location = useLocation();
-const productId = location.pathname.split("/")[2];
+    const location = useLocation();
+    const productId = location.pathname.split("/")[2];
 
-const product = useSelector((state) =>
-    state.product.products.find((product) => product._id === productId)
-); 
+    const product = useSelector((state) =>
+        state.product.products.find((product) => product._id === productId)
+    ); 
   return (
     <Container>
         <TitleContainer>
