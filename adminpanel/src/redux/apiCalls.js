@@ -1,6 +1,8 @@
 import { loginFailure, loginStart, loginSuccess } from "./userRedux"
+import { getClientStart, getClientSuccess, getClientFailure} from "./clientRedux"
 import { publicRequest, userRequest } from "../requestMethods"
 import { addProductFailure, addProductStart, addProductSuccess, deleteProductFailure, deleteProductStart, deleteProductSuccess, getProductFailure, getProductStart, getProductSuccess, updateProductFailure, updateProductStart, updateProductSuccess } from "./productRedux";
+
 export const login = async (dispatch,user)=>{
     dispatch(loginStart());
     try{
@@ -49,3 +51,25 @@ export const addProduct = async (product, dispatch) => {
     dispatch(addProductFailure());
   }
 };
+
+export const getClients = async (dispatch) => {
+  dispatch(getClientStart());
+  try {
+    const res = await userRequest.get("/users");
+    dispatch(getClientSuccess(res.data));
+  } catch (err) {
+    dispatch(getClientFailure());
+  }
+};
+
+
+
+
+
+
+
+
+
+
+
+
