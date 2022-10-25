@@ -2,11 +2,10 @@ import styled from "styled-components"
 import { DataGrid } from '@mui/x-data-grid';
 import DeleteIcon from '@mui/icons-material/Delete';
 import "./UserList.css";
-import { userRows } from "../dummyData";
 import { Link } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getClients } from "../redux/apiCalls";
+import { deleteClient, getClients } from "../redux/apiCalls";
 
 const Container = styled.div`
     flex: 4;
@@ -17,7 +16,6 @@ const UserListEdit = styled.button``
 export default function UserList() {
   const dispatch = useDispatch();
   const clients = useSelector(state=>state.client.users);
-  const [data,setData] = useState(userRows);
 
 
   useEffect(() => {
@@ -25,7 +23,7 @@ export default function UserList() {
   }, [dispatch]);
 
   const handleDelete = (id) =>{
-    setData(data.filter(item=>item.id !== id));
+    deleteClient(id, dispatch);    
   };
   const columns = [
     { field: '_id', headerName: 'ID', width: 200 },
@@ -39,7 +37,7 @@ export default function UserList() {
     {
       field: 'createdAt',
       headerName: 'Létrehozás időpontja',
-      width: 160,
+      width: 165,
     },
     {
       field: 'action',
@@ -48,10 +46,10 @@ export default function UserList() {
       renderCell: (params)=>{
         return(
         <>
-          <Link to={"/user/"+params.row.id}>
+          <Link to={"/user/"+params.row._id}>
           <UserListEdit className="userListEdit">Szerkesztés</UserListEdit>
           </Link>
-          <DeleteIcon className="userListDelete"onClick={()=>handleDelete(params.row.id)}/>
+          <DeleteIcon className="userListDelete"onClick={()=>handleDelete(params.row._id)}/>
         </>
         )
       }
