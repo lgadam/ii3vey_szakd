@@ -1,19 +1,17 @@
 import styled from "styled-components"
 import { DataGrid } from '@mui/x-data-grid';
 import DeleteIcon from '@mui/icons-material/Delete';
-import { productRows } from "../dummyData";
 import { Link } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import "./ProductList.css";
 import { useDispatch,useSelector } from "react-redux";
-import { getProducts } from "../redux/apiCalls";
+import { deleteProduct, getProducts } from "../redux/apiCalls";
 
 const Container = styled.div`
     flex:4;
 `
 
 export default function ProductList() {
-    const [data,setData] = useState(productRows);
     const dispatch = useDispatch();
     const products = useSelector(state=>state.product.products);
     
@@ -22,7 +20,7 @@ export default function ProductList() {
     }, [dispatch]);
 
     const handleDelete = (id) =>{
-        setData(data.filter(item=>item.id !== id));
+      deleteProduct(id, dispatch);
     };
 
     const columns = [
@@ -63,7 +61,7 @@ export default function ProductList() {
                 </Link>
                 <DeleteIcon
                   className="productListDelete"
-                  onClick={() => handleDelete(params.row.id)}
+                  onClick={() => handleDelete(params.row._id)}
                 />
               </>
             );
