@@ -1,5 +1,4 @@
 import styled from "styled-components"
-import Announcement from "../Components/Announcement"
 import Footer from "../Components/Footer"
 import GuideMail from "../Components/GuideMail"
 import Navbar from "../Components/Navbar"
@@ -111,7 +110,6 @@ const Wine = () => {
   return (
     <Container>
         <Navbar/>
-        <Announcement/>
         <Wrapper>
             <ImageContainer>
                 <Image src={product.image}/>

@@ -1,6 +1,5 @@
 import Navbar from '../Components/Navbar'
 import Footer from '../Components/Footer'
-import Announcement from '../Components/Announcement'
 import styled from 'styled-components'
 import "../Components/Slider.css"
 import Delete from '@mui/icons-material/Remove';
@@ -143,7 +142,6 @@ const Cart = () => {
   return (
     <Container>
         <Navbar />
-        <Announcement />
         <Wrapper>
             <Title>Kosár</Title>
             <Begin>

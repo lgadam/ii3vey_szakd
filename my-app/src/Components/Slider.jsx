@@ -60,7 +60,6 @@ const Description = styled.p`
     font-size: 24px;
     font-weight: 300;
 `
-const Button = styled.button``
 
 const Slider = () => {
     const [slideIndex, setSlideIndex] = useState(0);//slider lapozáshoz..
@@ -72,7 +71,6 @@ const Slider = () => {
         setSlideIndex(slideIndex < 2 ? slideIndex + 1 : 0);
     }
     };
-
     return (
     <Container className='slider-container'>
         <Arrow direction="left" onClick={() => handleClick("left")} className='slider-arrow'>
@@ -85,7 +83,6 @@ const Slider = () => {
                     <Image src={item.image} />
                 </ImageContainer>
                 <InfoContainer>
-                    <Button className='btn-slider'>Részletek</Button>
                     <Title>{item.title}</Title>
                     <Description>{item.description}</Description>
                 </InfoContainer>

@@ -1,11 +1,6 @@
 import bor1 from './bor1.jpg';
 import bor2 from './bor2.jpg';
 import bor3 from './bor3.jpg';
-import advbor1 from './advbor1.png';
-import advbor2 from './advbor2.jpeg';
-import advbor3 from './advbor3.jpg';
-import advbor4 from './advbor4.jpg';
-import advbor5 from './advbor5.jpg';
 import voros from './voros.png';
 import feher from './feher.jpg';
 import roze from './roze.jpg';
@@ -13,22 +8,22 @@ export const slideritems = [
     {
         id: 1,
         image: bor1,
-        title: "Top 1",
-        description: "Teszt szöveg... ezt csak úgy",
+        title: "Fő beszállító termelőhelyeink",
+        description: "Egri borvidék: A termőhelyi adottságok és a fajtaösszetétel kiváltságos helyzetet teremtett a borvidék számára, alkalmassá teszi arra, hogy vörös- és fehérborból egyaránt csúcsminőség készüljön.",
         bg: "white",
     },
     {
         id: 2,
         image: bor2,
-        title: "Top 2",
-        description: "Bakonyi kékfrankos válogatás kizárólag minőségi fogyasztáshoz ezzel nem lehet mellé lőni",
+        title: "Tokaji borvidék",
+        description: "Tokaj igazi kincse az aszú, amelyet évszázadok szakértelme formált tökéletessé, és újít meg időről-időre.",
         bg: "white",
     },
     {
         id: 3,
         image: bor3,
-        title: "Top 3",
-        description: "Az ostorosi családi pincészet által elkészített csibész rozé.",
+        title: "Villányi borvidék",
+        description: "A borvidék különleges termőhelyének, klímájának és alkotó borászainak köszönhetően a cabernet franc szőlőből készült bort premium és super premium minőségben állítják elő.",
         bg: "white",
     }
 ]
@@ -51,27 +46,4 @@ export const categories = [
         title: "Rozé borok",
         cat:"roze",
     }
-]
-export const advantagedProducts = [
-    {
-        id: 1,
-        image: advbor1,
-    },
-    {
-        id: 2,
-        image: advbor2,
-    },
-    {
-        id: 3,
-        image: advbor3,
-    },
-    {
-        id: 4,
-        image: advbor4,
-    },
-    {
-        id: 5,
-        image: advbor5,
-    },
-
 ]
