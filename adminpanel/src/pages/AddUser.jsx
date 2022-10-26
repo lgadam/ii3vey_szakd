@@ -1,4 +1,8 @@
+import { useState } from "react"
+import { useDispatch } from "react-redux"
 import styled from "styled-components"
+import { addClient } from "../redux/apiCalls";
+import CryptoJS from 'crypto-js'
 
 const Container = styled.div`
     flex: 4;
@@ -33,13 +37,6 @@ const AddUserInput = styled.input`
     border-radius: 5px;
 `
 
-const AddUserSelect = styled.select`
-    height: 40px;
-    border-radius: 6px;
-`
-
-const AddUserOption = styled.option``
-
 const AddUserButton = styled.button`
     width: 150px;
     margin-top: 20px;
@@ -51,45 +48,44 @@ const AddUserButton = styled.button`
 `
 
 export default function AddUser() {
+  const [inputs, setInputs] = useState({});
+  const [password, setPassword] = useState([]);
+  const dispatch = useDispatch();
+  console.log(process.env.PASSWD_SECRT);
+  const handleChange = (e) => {
+    setInputs((prev) => {
+        return { ...prev, [e.target.name]: e.target.value };
+    });
+  };
+  const handlePassword = (e) => {
+    setPassword(e.target.value);
+  }; 
+  const handleClick = (e) => {
+    e.preventDefault();
+    const pwd = CryptoJS.AES.encrypt(password, "lgadamaesdecryptkey1").toString();
+    const users = { ...inputs, password: pwd };
+    addClient(users, dispatch);
+  };
   return (
     <Container>
         <AddUserTitle>Felhasználó létrehozása</AddUserTitle>
         <AddUserForm>
             <AddUserItem>
                 <AddUserLabel>Felhasználónév</AddUserLabel>
-                <AddUserInput type="text" placeholder="felhasználónév"></AddUserInput>
-            </AddUserItem>
-            <AddUserItem>
-                <AddUserLabel>Teljes név</AddUserLabel>
-                <AddUserInput type="text" placeholder="teljesnév"></AddUserInput>
+                <AddUserInput name="username" type="text" placeholder="felhasználónév" onChange={handleChange}></AddUserInput>
             </AddUserItem>
             <AddUserItem>
                 <AddUserLabel>Email</AddUserLabel>
-                <AddUserInput type="text" placeholder="email"></AddUserInput>
+                <AddUserInput name="email" type="text" placeholder="email" onChange={handleChange}></AddUserInput>
             </AddUserItem>
             <AddUserItem>
                 <AddUserLabel>Jelszó</AddUserLabel>
-                <AddUserInput type="password" placeholder="jelszó"></AddUserInput>
+                <AddUserInput name="password" type="password" placeholder="jelszó" onChange={handlePassword}></AddUserInput>
             </AddUserItem>
             <AddUserItem>
-                <AddUserLabel>Telefonszám</AddUserLabel>
-                <AddUserInput type="text" placeholder="+36 20 123 4567"></AddUserInput>
-            </AddUserItem>
-            <AddUserItem>
-                <AddUserLabel>Cím</AddUserLabel>
-                <AddUserInput type="text" placeholder="3348 Szilvásvárad,Hungary"></AddUserInput>
-            </AddUserItem>
-            <AddUserItem>
-                <AddUserLabel>Telefonszám</AddUserLabel>
-                <AddUserInput type="text" placeholder="+36 20 123 4567"></AddUserInput>
-            </AddUserItem>
-            <AddUserItem>
-                <AddUserLabel>Aktív Státusz</AddUserLabel>
-                <AddUserSelect name="active" id="active">
-                    <AddUserOption value="yes">Igen</AddUserOption>
-                    <AddUserOption value="no">Nem</AddUserOption>
-                </AddUserSelect>
-            <AddUserButton>Hozzáadás</AddUserButton>
+                <AddUserLabel>Admin</AddUserLabel>
+                <AddUserInput name="isAdmin" type="isAdmin" placeholder="true,false" onChange={handleChange}></AddUserInput>
+                <AddUserButton onClick={handleClick}>Hozzáadás</AddUserButton>
             </AddUserItem>
         </AddUserForm>
     </Container>

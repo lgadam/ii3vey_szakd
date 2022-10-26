@@ -76,7 +76,7 @@ export default function WidgetSmall() {
       <WidgetSmList>
         {users.map(user=>(
         <WidgetSmListItem key={user._id}>
-            <WidgetSmImg img src={user.img || logo}/>
+            <WidgetSmImg img src={logo}/>
             <WidgetSmUser>
                 <WidgetSmUserName>{user.username}</WidgetSmUserName>
             </WidgetSmUser>

@@ -1,5 +1,5 @@
 import { loginFailure, loginStart, loginSuccess } from "./userRedux"
-import { getClientStart, getClientSuccess, getClientFailure, deleteClientStart, deleteClientSuccess, deleteClientFailure} from "./clientRedux"
+import { getClientStart, getClientSuccess, getClientFailure, deleteClientStart, deleteClientSuccess, deleteClientFailure, addClientStart, addClientFailure, addClientSuccess} from "./clientRedux"
 import { publicRequest, userRequest } from "../requestMethods"
 import { addProductFailure, addProductStart, addProductSuccess, deleteProductFailure, deleteProductStart, deleteProductSuccess, getProductFailure, getProductStart, getProductSuccess, updateProductFailure, updateProductStart, updateProductSuccess } from "./productRedux";
 
@@ -69,6 +69,16 @@ export const deleteClient = async (id, dispatch) => {
     dispatch(deleteClientSuccess(res.data));
   } catch (err) {
     dispatch(deleteClientFailure());
+  }
+};
+
+export const addClient = async (user, dispatch) => {
+  dispatch(addClientStart());
+  try {
+    const res = await userRequest.post(`/users`, user);
+    dispatch(addClientSuccess(res.data));
+  } catch (err) {
+    dispatch(addClientFailure());
   }
 };
 

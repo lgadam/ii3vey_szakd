@@ -35,6 +35,18 @@ export const clientSlice = createSlice({
       state.isFetching = false;
       state.error = true;
     },
+    addClientStart: (state) => {
+      state.isFetching = true;
+      state.error = false;
+    },
+    addClientSuccess: (state, action) => {
+      state.isFetching = false;
+      state.users.push(action.payload);
+    },
+    addClientFailure: (state) => {
+      state.isFetching = false;
+      state.error = true;
+    },
   },
 });
 
@@ -45,6 +57,9 @@ export const {
   deleteClientStart,
   deleteClientSuccess,
   deleteClientFailure,
+  addClientStart,
+  addClientSuccess,
+  addClientFailure,
 } = clientSlice.actions;
 
 export default clientSlice.reducer;
