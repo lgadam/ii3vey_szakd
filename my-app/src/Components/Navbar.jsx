@@ -7,6 +7,8 @@ import ShoppingBasket from '@mui/icons-material/ShoppingBasketOutlined';
 import { mobile } from "../responsive"
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { logout } from "../redux/apiCalls";
+import { useDispatch } from 'react-redux';
 
 const Container = styled.div`
   ${mobile({ height: "50px" })}
@@ -32,11 +34,19 @@ const Logo = styled.h1`
 `
 const Third = styled.div``
 const MenuItem = styled.div`
+  cursor:pointer;
   ${mobile({ fontSize: "12px", marginLeft: "10px" })}
 `
 
 function Navbar() {
   const quantity = useSelector(state=>state.cart.quantity);
+  const user = useSelector(state=>state.user.currentUser);
+  const dispatch = useDispatch();
+
+  const handleClick = (e) => {
+    e.preventDefault();
+    logout(dispatch);
+  };
   return (
     <Container className='navbar-container'>
       <Wrapper className='navbar-wrapper'>
@@ -55,6 +65,7 @@ function Navbar() {
             <Link to="/login" className='navbar-link'>
             <MenuItem className='navbar-third-items'>Bejelentkezés</MenuItem>
             </Link>
+            {user && <MenuItem className='navbar-third-items' onClick={handleClick}>Kijelentkezés</MenuItem>}
             <Link to="/cart">
               <MenuItem className='navbar-third-items'>
                   <Badge badgeContent={quantity} color="success">
