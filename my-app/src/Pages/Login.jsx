@@ -5,7 +5,6 @@ import { login } from "../redux/apiCalls";
 import login_bg from '../register_bg1.jpg';
 import { mobile } from "../responsive";
 import { useDispatch, useSelector } from "react-redux";
-
 const Container = styled.div`
     width: 100vw;
     height: 100vh;

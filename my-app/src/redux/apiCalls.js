@@ -1,5 +1,6 @@
 import { loginFailure, loginStart, loginSuccess } from "./userRedux"
 import { publicRequest } from "../requestMethods"
+import { addSignupFailure, addSignupStart, addSignupSuccess } from "./signupRedux";
 export const login = async (dispatch,user)=>{
     dispatch(loginStart());
     try{
@@ -9,3 +10,13 @@ export const login = async (dispatch,user)=>{
         dispatch(loginFailure());    
     }
 }
+
+export const addSignup = async (user, dispatch) => {
+    dispatch(addSignupStart());
+    try {
+      const res = await publicRequest.post(`/users/signup`, user);
+      dispatch(addSignupSuccess(res.data));
+    } catch (err) {
+      dispatch(addSignupFailure());
+    }
+  };

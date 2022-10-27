@@ -1,8 +1,9 @@
 import React from 'react'
 import styled from "styled-components"
-import logo from '../navbar/panel_logo.PNG';
-import FeedbackIcon from '@mui/icons-material/NotificationsActiveOutlined';
-import SettingsIcon from '@mui/icons-material/Settings';
+import { useDispatch } from 'react-redux';
+import { logout } from '../../redux/apiCalls';
+import { Link } from "react-router-dom";
+import "./Panel.css";
 
 const TopPanel = styled.div`
   width: 100%;
@@ -33,35 +34,22 @@ const Logo = styled.span`
   font-weight: 600;
   cursor: pointer;
 `
-const IconContainer = styled.div`
-  margin-right: 10px;
-  cursor: pointer;
-  position: relative;
-  color: #666666;
-`
-const FeedbackBadge = styled.span`
-  font-size: 11px;
-  width: 15px;
-  height: 15px;
-  position: absolute;
-  top: -5px;
-  right: 2px;
-  background-color: #1a995d;
-  color:white;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-`
 
-const UserPicture = styled.img`
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
+const UserLogout = styled.span`
+  background-color: #1a995d;
+  padding: 10px;
+  border-radius: 50px;
+  text-decoration: none;
   cursor: pointer;
 `
 
 export default function Panel() {
+  const dispatch = useDispatch();
+
+  const handleClick = (e) => {
+    e.preventDefault();
+    logout(dispatch);
+  };
   return (
     <TopPanel>
       <Wrapper>
@@ -69,14 +57,7 @@ export default function Panel() {
           <Logo>Adminpanel</Logo>
         </Left>
         <Right>
-          <IconContainer>
-            <FeedbackIcon />
-            <FeedbackBadge>1</FeedbackBadge>
-          </IconContainer>
-          <IconContainer>
-            <SettingsIcon />
-          </IconContainer>
-          <UserPicture img src={logo}/>
+          <UserLogout onClick={handleClick}><Link to="/logout" className="linkLogout">Kijelentkezés</Link></UserLogout>
         </Right>
       </Wrapper>
     </TopPanel>

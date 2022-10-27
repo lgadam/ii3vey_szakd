@@ -51,7 +51,6 @@ export default function AddUser() {
   const [inputs, setInputs] = useState({});
   const [password, setPassword] = useState([]);
   const dispatch = useDispatch();
-  console.log(process.env.PASSWD_SECRT);
   const handleChange = (e) => {
     setInputs((prev) => {
         return { ...prev, [e.target.name]: e.target.value };

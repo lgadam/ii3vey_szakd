@@ -1,4 +1,4 @@
-import { loginFailure, loginStart, loginSuccess } from "./userRedux"
+import { loginFailure, loginStart, loginSuccess,logoutUser } from "./userRedux"
 import { getClientStart, getClientSuccess, getClientFailure, deleteClientStart, deleteClientSuccess, deleteClientFailure, addClientStart, addClientFailure, addClientSuccess} from "./clientRedux"
 import { publicRequest, userRequest } from "../requestMethods"
 import { addProductFailure, addProductStart, addProductSuccess, deleteProductFailure, deleteProductStart, deleteProductSuccess, getProductFailure, getProductStart, getProductSuccess, updateProductFailure, updateProductStart, updateProductSuccess } from "./productRedux";
@@ -81,6 +81,13 @@ export const addClient = async (user, dispatch) => {
     dispatch(addClientFailure());
   }
 };
+
+export const logout = async (dispatch)=>{
+  try{
+      dispatch(logoutUser());
+  } catch(err){  
+  }
+}
 
 
 
