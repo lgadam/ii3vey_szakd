@@ -5,22 +5,42 @@ import { useSelector } from "react-redux";
 import { useLocation } from "react-router";
 import { userRequest } from "../requestMethods";
 import { Link } from 'react-router-dom';
+import success_bg from '../register_bg1.jpg';
 
 const Container = styled.div`
-    margin-top: 20px;
-    margin-bottom: 20px;
-    padding: 20px;
+    width: 100vw;
+    height: 100vh;
     background-color: white;
+    background: linear-gradient(
+        rgba(86, 67, 67, 0.5),
+        rgba(86, 67, 67, 0.5)
+    ),
+    url(${success_bg});
+    background-size: cover;
     display: flex;
+    align-items: center;
+    justify-content: center;
   `
 
 const Wrapper = styled.div`
+    height: 250px;
+    width: 300px;
     padding: 20px;
     background-color: white;
-    align-items: center;
-    justify-content: center;
 `
-const Button = styled.button``
+
+const ButtonContainer = styled.div`
+
+`
+const Button = styled.button`
+`
+const OrderContainer = styled.div`
+  margin-bottom: 60px;
+`
+const Order = styled.span`
+  font-size: 36px;
+  font-weight: 700;
+`
 
 const Success = () => {
   const location = useLocation();
@@ -40,21 +60,24 @@ const Success = () => {
           amount: cart.total,
           address: data.billing_details.address,
         });
-        setOrderId(res.data._id);
+        setOrderId(res?.data._id);
       } catch {}
     };
     data && createOrder();
   }, [cart, data, data._id, currentUser]);
-  console.log(orderId);
   return (
     <Container>
       <Wrapper>
-      {orderId
-        ? `Rendelés elkészült a következő azonosítóval ${orderId}`
-        : `A rendelés elkészült`}
+        <OrderContainer>
+        {orderId
+        ? <Order>Rendelés elkészült a következő azonosítóval ${orderId}</Order>
+        : <Order>A rendelésed elkészült</Order>}
+        </OrderContainer>
+        <ButtonContainer>
         <Link to="/">
           <Button className="btn-slider">Vissza a főoldalra</Button>
         </Link>
+        </ButtonContainer>
       </Wrapper>
     </Container>
   )

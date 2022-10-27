@@ -1,6 +1,5 @@
 import "./Slider.css";
 import styled from "styled-components"
-import ShoppingBasketIcon from '@mui/icons-material/ShoppingBasket';
 import SearchOutlined from "@mui/icons-material/SearchOutlined";
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import { Link } from "react-router-dom";
@@ -70,9 +69,6 @@ const ProductItem = ({item}) => {
       <Circle/>
       <Image src={item.image}/>
       <InfoContainer>
-        <Icon>
-            <ShoppingBasketIcon />
-        </Icon>
         <Icon>
             <FavoriteIcon />
         </Icon>
