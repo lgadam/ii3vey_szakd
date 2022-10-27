@@ -24,6 +24,9 @@ const WidgetLgTr = styled.tr``
 const WidgetLgTh = styled.th`
   text-align: left;
 `
+const Tfoot = styled.tfoot``
+
+const Thead = styled.thead``
 
 const WidgetLgUser = styled.td`
   display: flex;
@@ -71,26 +74,30 @@ export default function WidgetLarge() {
   return (
     <WidgetLg>
       <WidgetLgTitle>Friss tranzakciók</WidgetLgTitle>
-      <WidgetLgTable>
-        <WidgetLgTr>
-          <WidgetLgTh>Vásárló</WidgetLgTh>
-          <WidgetLgTh>Dátum</WidgetLgTh>
-          <WidgetLgTh>Összeg</WidgetLgTh>
-          <WidgetLgTh>Állapot</WidgetLgTh>
-        </WidgetLgTr>
-        {orders.map(order=>(
-        <WidgetLgTr key={order._id}>
-          <WidgetLgUser>
-            <WidgetLgName>{order.userId}</WidgetLgName>
-          </WidgetLgUser>
-          <WidgetLgDate>{order.createdAt}</WidgetLgDate>
-          <WidgetLgAmount>{order.amount / 10}Ft</WidgetLgAmount>
-          <WidgetLgStatus>
-            <Button type={order.status} />
-          </WidgetLgStatus>
-        </WidgetLgTr>
-        ))}
+      {orders.map(order=>(
+      <WidgetLgTable key={order._id}>
+        <Thead>
+          <WidgetLgTr>
+            <WidgetLgTh>Vásárló</WidgetLgTh>
+            <WidgetLgTh>Dátum</WidgetLgTh>
+            <WidgetLgTh>Összeg</WidgetLgTh>
+            <WidgetLgTh>Állapot</WidgetLgTh>
+          </WidgetLgTr>
+        </Thead>
+        <Tfoot>
+          <WidgetLgTr>
+            <WidgetLgUser>
+              <WidgetLgName>{order.userId}</WidgetLgName>
+            </WidgetLgUser>
+            <WidgetLgDate>{order.createdAt}</WidgetLgDate>
+            <WidgetLgAmount>{order.amount / 10}Ft</WidgetLgAmount>
+            <WidgetLgStatus>
+              <Button type={order.status} />
+            </WidgetLgStatus>
+          </WidgetLgTr>
+        </Tfoot>
       </WidgetLgTable>
+    ))} 
     </WidgetLg>
   )
 }

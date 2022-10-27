@@ -63,7 +63,7 @@ export default function FeaturedInfo() {
             <FeaturedTitle>Kimutatás</FeaturedTitle>
             <MoneyContainer>
                 {income.map(item =>(
-                <FeaturedMoney>{item.total / 10}Ft</FeaturedMoney>))}
+                <FeaturedMoney key={item._id}>{item.total / 10}Ft</FeaturedMoney>))}
                 <FeaturedMoneyRate><MovingIcon className="featuredIcon" /></FeaturedMoneyRate>
             </MoneyContainer>
             <FeaturedSbTitle>Havi kimutatás a rendelések beérkezésének összegéről</FeaturedSbTitle>

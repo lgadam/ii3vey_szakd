@@ -57,7 +57,7 @@ export default function Panel() {
           <Logo>Adminpanel</Logo>
         </Left>
         <Right>
-          <UserLogout onClick={handleClick}><Link to="/logout" className="linkLogout">Kijelentkezés</Link></UserLogout>
+          <UserLogout onClick={handleClick}><Link to="/" className="linkLogout">Kijelentkezés</Link></UserLogout>
         </Right>
       </Wrapper>
     </TopPanel>
