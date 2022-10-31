@@ -2,8 +2,6 @@ import Navbar from '../Components/Navbar'
 import Footer from '../Components/Footer'
 import styled from 'styled-components'
 import "../Components/Slider.css"
-import Delete from '@mui/icons-material/Remove';
-import Add from '@mui/icons-material/Add';
 import "../Components/Slider.css"
 import { mobile } from "../responsive"
 import { useSelector } from 'react-redux'
@@ -165,9 +163,7 @@ const Cart = () => {
                         </ProductData>
                         <PriceData>
                             <ProductAmountContainer>
-                                <Delete />
-                                <Amount>{product.quantity}</Amount>
-                                <Add />
+                                <Amount>{product.quantity} db</Amount>
                             </ProductAmountContainer>
                             <ProductPrice>{product.price*product.quantity} ft</ProductPrice>
                         </PriceData>
